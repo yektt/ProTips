@@ -6,14 +6,11 @@ module ApplicationHelper
 
   def default_avatar(user)
     if user.name.present?
-      if user.name[0].downcase < 'h'
-        "#{Avatar_cat}"
-      elsif user.name[0].downcase < 'n'
-        "#{Avatar_octahedron}"
-      elsif user.name[0].downcase < 'u'
-        "#{Avatar_pyramid}"
-      else
-        "#{Avatar_happy_cone}"
+      case
+      when ( user.name[0].downcase < 'h') then "#{Avatar_cat}"
+      when ( user.name[0].downcase < 'n') then "#{Avatar_octahedron}"
+      when ( user.name[0].downcase < 'u') then "#{Avatar_pyramid}"
+      else "#{Avatar_happy_cone}"
       end
     else
       "#{Avatar_cat}"

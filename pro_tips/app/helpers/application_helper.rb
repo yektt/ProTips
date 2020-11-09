@@ -24,6 +24,10 @@ module ApplicationHelper
   end
 
   def pluralize_tips(tips)
-    "#{tips.count} tips"
+    if ( tips.count > 1 )
+      tips.count.to_s << " tips"
+    else
+      tips.count.to_s << " tip"
+    end
   end
 end

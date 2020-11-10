@@ -2,8 +2,8 @@ class TipsController < ApplicationController
   before_action :set_tip, only: [:show, :edit, :update, :destroy]
 
   def index
-    @tips = Tip.where('title LIKE ?', "%#{params[:q]}%").or(
-      Tip.where('body LIKE ?', "%#{params[:q]}%"))
+    @search_term = params[:q]
+    @tips = Tip.search(@search_term)
   end
 
   def show

@@ -1,1 +1,5 @@
 .DS_Store
+pro_tips/log/*
+pro_tips/tmp/cache/*
+pro_tips/tmp/pids/*
+pro_tips/tmp/cache/*

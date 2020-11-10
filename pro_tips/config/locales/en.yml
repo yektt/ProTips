@@ -1,13 +1,32 @@
 en:
+  
+  cancel: 'Cancel'
+  create_new_tip:
+    button: 'Create Tip'
+
+  helpers:
+    label:
+      tip:
+        title: 'Title'
+        body: 'Body'
+        
+
 
   login: 'Log in'
 
   most_recent_activities: 'Here are the four most recently active tips:'
+
+  notice_for_tip_title: 'Maximum 100 characters'
   
   search:
     button: 'Search'
     placeholder: 'e.g. Ruby classes'
   signup: 'Sign up'
 
+  user: 'User'
+
   welcome_part1: 'Share your programming tips with other developers online!'
   welcome_part2: '... or find tips about something:'
+
+
+

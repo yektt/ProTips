@@ -7,7 +7,7 @@
     <%= form.label :title, class: 'col-md-2 col-form-label' %>
     <div class="col-md-10">
       <%= form.text_field :title, class: 'form-control' %>
-      <small class="form-text text-muted">Maximum 100 characters</small>
+      <small class="form-text text-muted"><%= translate('notice_for_tip_title') %></small>
     </div>
   </fieldset>
 
@@ -19,7 +19,7 @@
   </fieldset>
 
   <fieldset class="form-group row">
-    <%= form.label 'User', for: 'tip_user_id', class: 'col-md-2 col-form-label' %>
+    <%= form.label(translate('user'), for: 'tip_user_id', class: 'col-md-2 col-form-label') %>
     <div class="col-md-10">
       <%= form.collection_select(:user_id, User.all, :id, :name, {}, { class: 'form-control' }) %>
     </div>
@@ -27,10 +27,10 @@
 
   <div class="form-group row d-flex flex-row-reverse">
     <div class="col-md-10">
-      <%= form.submit class: 'btn btn-primary btn-block mb-2' %>
+      <%= form.submit translate('create_new_tip.button'), class: 'btn btn-primary btn-block mb-2' %>
     </div>
     <div class="col-md-2">
-      <%= link_to 'Cancel', account_path, class: 'btn btn-light btn-block' %>
+      <%= link_to translate('cancel'), account_path, class: 'btn btn-light btn-block' %>
     </div>
   </div>
 <% end %>

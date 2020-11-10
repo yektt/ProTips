@@ -1,3 +1,13 @@
 en:
+
   login: 'Log in'
+
+  most_recent_activities: 'Here are the four most recently active tips:'
+  
+  search:
+    button: 'Search'
+    placeholder: 'e.g. Ruby classes'
   signup: 'Sign up'
+
+  welcome_part1: 'Share your programming tips with other developers online!'
+  welcome_part2: '... or find tips about something:'

@@ -1,6 +1,6 @@
-  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
-  [1m[35m (1.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
-  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
   [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
 Migrating to CreateUsers (20180124172525)
   [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
@@ -35,16 +35,16 @@ FOREIGN KEY ("tip_id")
             WHERE name='index_comments_on_user_id' AND type='index'
 [0m
   [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_comments_on_tip_id" ON "comments" ("tip_id")[0m
-  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180124173831"]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180124173831"]]
   [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
 Migrating to CreateJoinTableTipUser (20180125102303)
-  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "tips_users" ("tip_id" integer NOT NULL, "user_id" integer NOT NULL)[0m
-  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180125102303"]]
-  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
-  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
   [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-11-06 09:22:44.382572"], ["updated_at", "2020-11-06 09:22:44.382572"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "tips_users" ("tip_id" integer NOT NULL, "user_id" integer NOT NULL)[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180125102303"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-11-10 10:11:22.638451"], ["updated_at", "2020-11-10 10:11:22.638451"]]
   [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
   [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
@@ -74,77 +74,1392 @@ Migrating to CreateJoinTableTipUser (20180125102303)
   [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
   [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "florian@extensionschool.ch"], ["LIMIT", 1]]
-  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "florian@extensionschool.ch"], ["name", "Florian"], ["created_at", "2020-11-06 09:22:54.364260"], ["updated_at", "2020-11-06 09:22:54.364260"]]
-  [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
-  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
-  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "sara@extensionschool.ch"], ["LIMIT", 1]]
-  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "sara@extensionschool.ch"], ["name", "Sara"], ["created_at", "2020-11-06 09:22:54.368596"], ["updated_at", "2020-11-06 09:22:54.368596"]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "florian@extensionschool.ch"], ["name", "Florian"], ["created_at", "2020-11-10 10:11:30.416575"], ["updated_at", "2020-11-10 10:11:30.416575"]]
   [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
-  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "linda@extensionschool.ch"], ["LIMIT", 1]]
-  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "linda@extensionschool.ch"], ["name", "Linda"], ["created_at", "2020-11-06 09:22:54.371924"], ["updated_at", "2020-11-06 09:22:54.371924"]]
-  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
-  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Use #name on a class in Ruby"], ["body", "Using Class.name returns a String representing the name of a class!  E.g. Integer.name returns \"Integer\" and ApplicationController.name returns \"ApplicationController\""], ["user_id", 1], ["created_at", "2020-11-06 09:22:54.383863"], ["updated_at", "2020-11-06 09:22:54.383863"]]
-  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
-  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Getting a substring in Ruby"], ["body", "Use String#[start,length] to return the substring of a String, e.g. \"Hello, world\"[7,5] => \"world\""], ["user_id", 1], ["created_at", "2020-11-06 09:22:54.386312"], ["updated_at", "2020-11-06 09:22:54.386312"]]
-  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
-  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Going backwards in an Array"], ["body", "It's possible to use negative numbers as backwards indexes in Arrays e.g. [1,2,3,4][-1] => 4"], ["user_id", 1], ["created_at", "2020-11-06 09:22:54.388545"], ["updated_at", "2020-11-06 09:22:54.388545"]]
-  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
-  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Using ERB in CSS and Sass files"], ["body", "Did you know that you can define CSS assets as ERB files, just like .html.erb and .js.erb views?  By using .scss.erb as the extension of a file, the asset pipeline will first process the file as ERB and evaluate Ruby expressions.  Then it will treat the file as Sass and compile it to CSS!"], ["user_id", 2], ["created_at", "2020-11-06 09:22:54.390646"], ["updated_at", "2020-11-06 09:22:54.390646"]]
-  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
-  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Substitute a value in a String"], ["body", "String#gsub can be used to replace any substring with another substring in a String, e.g. 'Learn about :language'.gsub(':language', 'JavaScript') => \"Learn about JavaScript\""], ["user_id", 2], ["created_at", "2020-11-06 09:22:54.392641"], ["updated_at", "2020-11-06 09:22:54.392641"]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "sara@extensionschool.ch"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "sara@extensionschool.ch"], ["name", "Sara"], ["created_at", "2020-11-10 10:11:30.419486"], ["updated_at", "2020-11-10 10:11:30.419486"]]
   [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
   [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Multi-line Strings using %Q"], ["body", "It's possible to create a String on multiple lines using %Q( ... ).\n\nBy defining the String in %Q, a String can span several lines.\n\nThis is just basic \"newline\" markers and won't convert to new lines in HTML, which needs the use\nof <br /> or more appropriate markup."], ["user_id", 2], ["created_at", "2020-11-06 09:22:54.394427"], ["updated_at", "2020-11-06 09:22:54.394427"]]
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "linda@extensionschool.ch"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "linda@extensionschool.ch"], ["name", "Linda"], ["created_at", "2020-11-10 10:11:30.421342"], ["updated_at", "2020-11-10 10:11:30.421342"]]
   [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
   [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Using underscores in numbers"], ["body", "It's pretty cool that underscores can be used to define numbers in Ruby, such as 16_453 or 12_345_678.  It can make big numbers much more readable!"], ["user_id", 2], ["created_at", "2020-11-06 09:22:54.396257"], ["updated_at", "2020-11-06 09:22:54.396257"]]
-  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Use #name on a class in Ruby"], ["body", "Using Class.name returns a String representing the name of a class!  E.g. Integer.name returns \"Integer\" and ApplicationController.name returns \"ApplicationController\""], ["user_id", 1], ["created_at", "2020-11-10 10:11:30.431432"], ["updated_at", "2020-11-10 10:11:30.431432"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
   [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Calculate a number to a power"], ["body", "Use ** to calculate the number to a particular power, e.g. 2**5 => 32"], ["user_id", 2], ["created_at", "2020-11-06 09:22:54.398069"], ["updated_at", "2020-11-06 09:22:54.398069"]]
-  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
-  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Using rails:secret"], ["body", "Use rails:secret to generate a long secret key for any purpose, not just for a value to use as SECRET_KEY_BASE."], ["user_id", 3], ["created_at", "2020-11-06 09:22:54.399705"], ["updated_at", "2020-11-06 09:22:54.399705"]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Getting a substring in Ruby"], ["body", "Use String#[start,length] to return the substring of a String, e.g. \"Hello, world\"[7,5] => \"world\""], ["user_id", 1], ["created_at", "2020-11-10 10:11:30.433632"], ["updated_at", "2020-11-10 10:11:30.433632"]]
   [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
   [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Try using grep with log files"], ["body", "grep is a terminal program that can be used to search log files for a particular pattern.  It takes a search term as a regular expression and is therefore very powerful.  Learning about regular expressions is very useful for other tasks as well; they are often used in Rails model validations, route definitions and in JavaScript"], ["user_id", 3], ["created_at", "2020-11-06 09:22:54.401266"], ["updated_at", "2020-11-06 09:22:54.401266"]]
-  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
-  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Organize CSS rules in Sass files well"], ["body", "It's worth taking the time to organize CSS rules in various Sass files, keeping related rules together.  It helps someone new to a project know where to look for particular rules."], ["user_id", 3], ["created_at", "2020-11-06 09:22:54.403017"], ["updated_at", "2020-11-06 09:22:54.403017"]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Going backwards in an Array"], ["body", "It's possible to use negative numbers as backwards indexes in Arrays e.g. [1,2,3,4][-1] => 4"], ["user_id", 1], ["created_at", "2020-11-10 10:11:30.435246"], ["updated_at", "2020-11-10 10:11:30.435246"]]
   [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
   [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Just experiment!"], ["body", "The great thing about writing software is that it's easy to try things out and change them before submitting it for a production deployment.  I've found that taking a break and coming back to a difficult programming problem really helps too."], ["user_id", 3], ["created_at", "2020-11-06 09:22:54.404630"], ["updated_at", "2020-11-06 09:22:54.404630"]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Using ERB in CSS and Sass files"], ["body", "Did you know that you can define CSS assets as ERB files, just like .html.erb and .js.erb views?  By using .scss.erb as the extension of a file, the asset pipeline will first process the file as ERB and evaluate Ruby expressions.  Then it will treat the file as Sass and compile it to CSS!"], ["user_id", 2], ["created_at", "2020-11-10 10:11:30.436989"], ["updated_at", "2020-11-10 10:11:30.436989"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Substitute a value in a String"], ["body", "String#gsub can be used to replace any substring with another substring in a String, e.g. 'Learn about :language'.gsub(':language', 'JavaScript') => \"Learn about JavaScript\""], ["user_id", 2], ["created_at", "2020-11-10 10:11:30.438543"], ["updated_at", "2020-11-10 10:11:30.438543"]]
   [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
-Started GET "/" for 127.0.0.1 at 2020-11-06 10:23:37 +0100
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Multi-line Strings using %Q"], ["body", "It's possible to create a String on multiple lines using %Q( ... ).\n\nBy defining the String in %Q, a String can span several lines.\n\nThis is just basic \"newline\" markers and won't convert to new lines in HTML, which needs the use\nof <br /> or more appropriate markup."], ["user_id", 2], ["created_at", "2020-11-10 10:11:30.440233"], ["updated_at", "2020-11-10 10:11:30.440233"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Using underscores in numbers"], ["body", "It's pretty cool that underscores can be used to define numbers in Ruby, such as 16_453 or 12_345_678.  It can make big numbers much more readable!"], ["user_id", 2], ["created_at", "2020-11-10 10:11:30.441731"], ["updated_at", "2020-11-10 10:11:30.441731"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Calculate a number to a power"], ["body", "Use ** to calculate the number to a particular power, e.g. 2**5 => 32"], ["user_id", 2], ["created_at", "2020-11-10 10:11:30.443207"], ["updated_at", "2020-11-10 10:11:30.443207"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Using rails:secret"], ["body", "Use rails:secret to generate a long secret key for any purpose, not just for a value to use as SECRET_KEY_BASE."], ["user_id", 3], ["created_at", "2020-11-10 10:11:30.444828"], ["updated_at", "2020-11-10 10:11:30.444828"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Try using grep with log files"], ["body", "grep is a terminal program that can be used to search log files for a particular pattern.  It takes a search term as a regular expression and is therefore very powerful.  Learning about regular expressions is very useful for other tasks as well; they are often used in Rails model validations, route definitions and in JavaScript"], ["user_id", 3], ["created_at", "2020-11-10 10:11:30.446307"], ["updated_at", "2020-11-10 10:11:30.446307"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Organize CSS rules in Sass files well"], ["body", "It's worth taking the time to organize CSS rules in various Sass files, keeping related rules together.  It helps someone new to a project know where to look for particular rules."], ["user_id", 3], ["created_at", "2020-11-10 10:11:30.447943"], ["updated_at", "2020-11-10 10:11:30.447943"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Just experiment!"], ["body", "The great thing about writing software is that it's easy to try things out and change them before submitting it for a production deployment.  I've found that taking a break and coming back to a difficult programming problem really helps too."], ["user_id", 3], ["created_at", "2020-11-10 10:11:30.459950"], ["updated_at", "2020-11-10 10:11:30.459950"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/" for 127.0.0.1 at 2020-11-10 11:11:44 +0100
   [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
 Processing by HomeController#index as HTML
   Rendering home/index.html.erb within layouts/application
-  [1m[36mTip Load (0.2ms)[0m  [1m[34mSELECT  "tips".* FROM "tips" ORDER BY "tips"."updated_at" DESC LIMIT ?[0m  [["LIMIT", 4]]
-  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
-  Rendered application/_user_link.html.erb (0.6ms)
-  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 12]]
-  Rendered application/_tip_card.html.erb (30.2ms)
-  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTip Load (0.4ms)[0m  [1m[34mSELECT  "tips".* FROM "tips" ORDER BY "tips"."updated_at" DESC LIMIT ?[0m  [["LIMIT", 4]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered application/_user_link.html.erb (0.7ms)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 12]]
+  Rendered application/_tip_card.html.erb (38.8ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
   Rendered application/_user_link.html.erb (0.2ms)
   [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 11]]
-  Rendered application/_tip_card.html.erb (2.9ms)
+  Rendered application/_tip_card.html.erb (3.8ms)
   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
   Rendered application/_user_link.html.erb (0.2ms)
   [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 10]]
-  Rendered application/_tip_card.html.erb (3.7ms)
+  Rendered application/_tip_card.html.erb (3.3ms)
   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
   Rendered application/_user_link.html.erb (0.2ms)
   [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 9]]
-  Rendered application/_tip_card.html.erb (4.4ms)
-  Rendered home/index.html.erb within layouts/application (51.7ms)
+  Rendered application/_tip_card.html.erb (3.8ms)
+  Rendered home/index.html.erb within layouts/application (66.4ms)
+  Rendered application/_anonymous_user_header.html.erb (0.3ms)
+  Rendered application/_header.html.erb (2.3ms)
+  Rendered application/_footer.html.erb (1.0ms)
+Completed 200 OK in 3405ms (Views: 3384.8ms | ActiveRecord: 3.8ms)
+
+
+Started GET "/users/3" for 127.0.0.1 at 2020-11-10 11:21:32 +0100
+Started GET "/users/3" for 127.0.0.1 at 2020-11-10 11:21:42 +0100
+Started GET "/users/3" for 127.0.0.1 at 2020-11-10 11:21:42 +0100
+Started GET "/users/3" for 127.0.0.1 at 2020-11-10 11:21:42 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mTip Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "tips" WHERE "tips"."user_id" = ? LIMIT ?[0m  [["user_id", 3], ["LIMIT", 1]]
+  [1m[36mTip Load (0.1ms)[0m  [1m[34mSELECT  "tips".* FROM "tips" WHERE "tips"."user_id" = ? ORDER BY "tips"."id" DESC LIMIT ?[0m  [["user_id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Tip Load (0.0ms)[0m  [1m[34mSELECT  "tips".* FROM "tips" WHERE "tips"."user_id" = ? ORDER BY "tips"."id" DESC LIMIT ?[0m  [["user_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "tips" WHERE "tips"."user_id" = ?[0m  [["user_id", 3]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "tips" WHERE "tips"."user_id" = ?[0m  [["user_id", 3]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."user_id" = ?[0m  [["user_id", 3]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."user_id" = ?[0m  [["user_id", 3]]
+  Rendered application/_user_card.html.erb (18.5ms)
+  Rendered users/show.html.erb within layouts/application (20.0ms)
   Rendered application/_anonymous_user_header.html.erb (0.3ms)
   Rendered application/_header.html.erb (1.5ms)
   Rendered application/_footer.html.erb (0.3ms)
-Completed 200 OK in 2526ms (Views: 2509.0ms | ActiveRecord: 2.6ms)
+Completed 200 OK in 57ms (Views: 39.9ms | ActiveRecord: 2.1ms)
+
+
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendering users/show.html.erb within layouts/application
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mTip Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "tips" WHERE "tips"."user_id" = ? LIMIT ?[0m  [["user_id", 3], ["LIMIT", 1]]
+  [1m[36mTip Load (0.1ms)[0m  [1m[34mSELECT  "tips".* FROM "tips" WHERE "tips"."user_id" = ? ORDER BY "tips"."id" DESC LIMIT ?[0m  [["user_id", 3], ["LIMIT", 1]]
+  [1m[36mTip Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "tips" WHERE "tips"."user_id" = ? LIMIT ?[0m  [["user_id", 3], ["LIMIT", 1]]
+  [1m[36mTip Load (0.1ms)[0m  [1m[34mSELECT  "tips".* FROM "tips" WHERE "tips"."user_id" = ? ORDER BY "tips"."id" DESC LIMIT ?[0m  [["user_id", 3], ["LIMIT", 1]]
+  [1m[36mTip Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "tips" WHERE "tips"."user_id" = ? LIMIT ?[0m  [["user_id", 3], ["LIMIT", 1]]
+  [1m[36mTip Load (0.1ms)[0m  [1m[34mSELECT  "tips".* FROM "tips" WHERE "tips"."user_id" = ? ORDER BY "tips"."id" DESC LIMIT ?[0m  [["user_id", 3], ["LIMIT", 1]]
+  [1m[36mCACHE Tip Load (0.0ms)[0m  [1m[34mSELECT  "tips".* FROM "tips" WHERE "tips"."user_id" = ? ORDER BY "tips"."id" DESC LIMIT ?[0m  [["user_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "tips" WHERE "tips"."user_id" = ?[0m  [["user_id", 3]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "tips" WHERE "tips"."user_id" = ?[0m  [["user_id", 3]]
+  [1m[36mCACHE Tip Load (0.0ms)[0m  [1m[34mSELECT  "tips".* FROM "tips" WHERE "tips"."user_id" = ? ORDER BY "tips"."id" DESC LIMIT ?[0m  [["user_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "tips" WHERE "tips"."user_id" = ?[0m  [["user_id", 3]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "tips" WHERE "tips"."user_id" = ?[0m  [["user_id", 3]]
+  [1m[36mCACHE Tip Load (0.0ms)[0m  [1m[34mSELECT  "tips".* FROM "tips" WHERE "tips"."user_id" = ? ORDER BY "tips"."id" DESC LIMIT ?[0m  [["user_id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "tips" WHERE "tips"."user_id" = ?[0m  [["user_id", 3]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "tips" WHERE "tips"."user_id" = ?[0m  [["user_id", 3]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."user_id" = ?[0m  [["user_id", 3]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."user_id" = ?[0m  [["user_id", 3]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."user_id" = ?[0m  [["user_id", 3]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."user_id" = ?[0m  [["user_id", 3]]
+  Rendered application/_user_card.html.erb (22.2ms)
+  Rendered users/show.html.erb within layouts/application (23.3ms)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."user_id" = ?[0m  [["user_id", 3]]
+  Rendered application/_user_card.html.erb (23.9ms)
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."user_id" = ?[0m  [["user_id", 3]]
+  Rendered application/_user_card.html.erb (23.4ms)
+  Rendered users/show.html.erb within layouts/application (27.1ms)
+  Rendered users/show.html.erb within layouts/application (26.2ms)
+  Rendered application/_anonymous_user_header.html.erb (0.1ms)
+  Rendered application/_header.html.erb (2.5ms)
+  Rendered application/_anonymous_user_header.html.erb (0.1ms)
+  Rendered application/_anonymous_user_header.html.erb (0.1ms)
+  Rendered application/_header.html.erb (1.9ms)
+  Rendered application/_header.html.erb (1.4ms)
+  Rendered application/_footer.html.erb (0.0ms)
+Completed 200 OK in 92ms (Views: 72.1ms | ActiveRecord: 1.3ms)
+
+
+  Rendered application/_footer.html.erb (0.0ms)
+  Rendered application/_footer.html.erb (0.0ms)
+Completed 200 OK in 93ms (Views: 73.8ms | ActiveRecord: 0.9ms)
+
+
+Completed 200 OK in 93ms (Views: 74.3ms | ActiveRecord: 1.4ms)
+
+
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (1.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "comments"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "body" varchar, "user_id" integer, "tip_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE  INDEX "index_comments_on_tip_id" ON "comments" ("tip_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_comments_on_tip_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_comments_on_tip_id' AND type='index'
+[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE  INDEX "index_comments_on_user_id" ON "comments" ("user_id")[0m
+  [1m[35m (0.9ms)[0m  [1m[35mDROP TABLE IF EXISTS "tips"[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "tips" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "body" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE  INDEX "index_tips_on_user_id" ON "tips" ("user_id")[0m
+  [1m[35m (1.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "tips_users"[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "tips_users" ("tip_id" integer NOT NULL, "user_id" integer NOT NULL)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "users"[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar, "name" varchar, "avatar_url" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (1.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "comments"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "body" varchar, "user_id" integer, "tip_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE  INDEX "index_comments_on_tip_id" ON "comments" ("tip_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_comments_on_tip_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_comments_on_tip_id' AND type='index'
+[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE  INDEX "index_comments_on_user_id" ON "comments" ("user_id")[0m
+  [1m[35m (1.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "tips"[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "tips" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "body" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE  INDEX "index_tips_on_user_id" ON "tips" ("user_id")[0m
+  [1m[35m (0.9ms)[0m  [1m[35mDROP TABLE IF EXISTS "tips_users"[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "tips_users" ("tip_id" integer NOT NULL, "user_id" integer NOT NULL)[0m
+  [1m[35m (0.9ms)[0m  [1m[35mDROP TABLE IF EXISTS "users"[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar, "name" varchar, "avatar_url" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = ?, "updated_at" = ? WHERE "ar_internal_metadata"."key" = ?[0m  [["value", "development"], ["updated_at", "2020-11-10 10:43:34.928664"], ["key", "environment"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "florian@extensionschool.ch"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "florian@extensionschool.ch"], ["name", "Florian"], ["created_at", "2020-11-10 10:43:34.957646"], ["updated_at", "2020-11-10 10:43:34.957646"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "sara@extensionschool.ch"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "sara@extensionschool.ch"], ["name", "Sara"], ["created_at", "2020-11-10 10:43:34.960813"], ["updated_at", "2020-11-10 10:43:34.960813"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "linda@extensionschool.ch"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "linda@extensionschool.ch"], ["name", "Linda"], ["created_at", "2020-11-10 10:43:34.963170"], ["updated_at", "2020-11-10 10:43:34.963170"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Use #name on a class in Ruby"], ["body", "Using Class.name returns a String representing the name of a class!  E.g. Integer.name returns \"Integer\" and ApplicationController.name returns \"ApplicationController\""], ["user_id", 1], ["created_at", "2020-11-10 10:43:34.973303"], ["updated_at", "2020-11-10 10:43:34.973303"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Getting a substring in Ruby"], ["body", "Use String#[start,length] to return the substring of a String, e.g. \"Hello, world\"[7,5] => \"world\""], ["user_id", 1], ["created_at", "2020-11-10 10:43:34.975544"], ["updated_at", "2020-11-10 10:43:34.975544"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Going backwards in an Array"], ["body", "It's possible to use negative numbers as backwards indexes in Arrays e.g. [1,2,3,4][-1] => 4"], ["user_id", 1], ["created_at", "2020-11-10 10:43:34.977438"], ["updated_at", "2020-11-10 10:43:34.977438"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Using ERB in CSS and Sass files"], ["body", "Did you know that you can define CSS assets as ERB files, just like .html.erb and .js.erb views?  By using .scss.erb as the extension of a file, the asset pipeline will first process the file as ERB and evaluate Ruby expressions.  Then it will treat the file as Sass and compile it to CSS!"], ["user_id", 2], ["created_at", "2020-11-10 10:43:34.979318"], ["updated_at", "2020-11-10 10:43:34.979318"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Substitute a value in a String"], ["body", "String#gsub can be used to replace any substring with another substring in a String, e.g. 'Learn about :language'.gsub(':language', 'JavaScript') => \"Learn about JavaScript\""], ["user_id", 2], ["created_at", "2020-11-10 10:43:34.981409"], ["updated_at", "2020-11-10 10:43:34.981409"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Multi-line Strings using %Q"], ["body", "It's possible to create a String on multiple lines using %Q( ... ).\n\nBy defining the String in %Q, a String can span several lines.\n\nThis is just basic \"newline\" markers and won't convert to new lines in HTML, which needs the use\nof <br /> or more appropriate markup."], ["user_id", 2], ["created_at", "2020-11-10 10:43:34.984695"], ["updated_at", "2020-11-10 10:43:34.984695"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Using underscores in numbers"], ["body", "It's pretty cool that underscores can be used to define numbers in Ruby, such as 16_453 or 12_345_678.  It can make big numbers much more readable!"], ["user_id", 2], ["created_at", "2020-11-10 10:43:34.987585"], ["updated_at", "2020-11-10 10:43:34.987585"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Calculate a number to a power"], ["body", "Use ** to calculate the number to a particular power, e.g. 2**5 => 32"], ["user_id", 2], ["created_at", "2020-11-10 10:43:34.990175"], ["updated_at", "2020-11-10 10:43:34.990175"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Using rails:secret"], ["body", "Use rails:secret to generate a long secret key for any purpose, not just for a value to use as SECRET_KEY_BASE."], ["user_id", 3], ["created_at", "2020-11-10 10:43:34.992314"], ["updated_at", "2020-11-10 10:43:34.992314"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Try using grep with log files"], ["body", "grep is a terminal program that can be used to search log files for a particular pattern.  It takes a search term as a regular expression and is therefore very powerful.  Learning about regular expressions is very useful for other tasks as well; they are often used in Rails model validations, route definitions and in JavaScript"], ["user_id", 3], ["created_at", "2020-11-10 10:43:34.994398"], ["updated_at", "2020-11-10 10:43:34.994398"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Organize CSS rules in Sass files well"], ["body", "It's worth taking the time to organize CSS rules in various Sass files, keeping related rules together.  It helps someone new to a project know where to look for particular rules."], ["user_id", 3], ["created_at", "2020-11-10 10:43:34.997096"], ["updated_at", "2020-11-10 10:43:34.997096"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Just experiment!"], ["body", "The great thing about writing software is that it's easy to try things out and change them before submitting it for a production deployment.  I've found that taking a break and coming back to a difficult programming problem really helps too."], ["user_id", 3], ["created_at", "2020-11-10 10:43:35.000358"], ["updated_at", "2020-11-10 10:43:35.000358"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTip Load (0.1ms)[0m  [1m[34mSELECT  "tips".* FROM "tips" WHERE "tips"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "comments" ("body", "user_id", "tip_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["body", "Thank you! It will help to develop my new program much faster!"], ["user_id", 2], ["tip_id", 2], ["created_at", "2020-11-10 10:43:35.034420"], ["updated_at", "2020-11-10 10:43:35.034420"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_comments_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_comments_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_comments_on_tip_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_comments_on_tip_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_tips_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_tips_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "florian@extensionschool.ch"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "comments"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE "comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "body" varchar, "user_id" integer, "tip_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE  INDEX "index_comments_on_tip_id" ON "comments" ("tip_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_comments_on_tip_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_comments_on_tip_id' AND type='index'
+[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE  INDEX "index_comments_on_user_id" ON "comments" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "tips"[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "tips" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "body" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE  INDEX "index_tips_on_user_id" ON "tips" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "tips_users"[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "tips_users" ("tip_id" integer NOT NULL, "user_id" integer NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "users"[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar, "name" varchar, "avatar_url" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20180125102303)[0m
+  [1m[35m (1.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20180124172950),
+(20180124172525),
+(20180124173831);
+
+[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-11-10 10:44:30.614809"], ["updated_at", "2020-11-10 10:44:30.614809"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "comments"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "body" varchar, "user_id" integer, "tip_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE  INDEX "index_comments_on_tip_id" ON "comments" ("tip_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_comments_on_tip_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_comments_on_tip_id' AND type='index'
+[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE  INDEX "index_comments_on_user_id" ON "comments" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "tips"[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "tips" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "body" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE  INDEX "index_tips_on_user_id" ON "tips" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "tips_users"[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "tips_users" ("tip_id" integer NOT NULL, "user_id" integer NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "users"[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar, "name" varchar, "avatar_url" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20180125102303)[0m
+  [1m[35m (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20180124172950),
+(20180124172525),
+(20180124173831);
+
+[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-11-10 10:44:30.637871"], ["updated_at", "2020-11-10 10:44:30.637871"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "florian@extensionschool.ch"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "florian@extensionschool.ch"], ["name", "Florian"], ["created_at", "2020-11-10 10:44:30.669041"], ["updated_at", "2020-11-10 10:44:30.669041"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "sara@extensionschool.ch"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "sara@extensionschool.ch"], ["name", "Sara"], ["created_at", "2020-11-10 10:44:30.672412"], ["updated_at", "2020-11-10 10:44:30.672412"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "linda@extensionschool.ch"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "linda@extensionschool.ch"], ["name", "Linda"], ["created_at", "2020-11-10 10:44:30.675098"], ["updated_at", "2020-11-10 10:44:30.675098"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Use #name on a class in Ruby"], ["body", "Using Class.name returns a String representing the name of a class!  E.g. Integer.name returns \"Integer\" and ApplicationController.name returns \"ApplicationController\""], ["user_id", 1], ["created_at", "2020-11-10 10:44:30.697131"], ["updated_at", "2020-11-10 10:44:30.697131"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Getting a substring in Ruby"], ["body", "Use String#[start,length] to return the substring of a String, e.g. \"Hello, world\"[7,5] => \"world\""], ["user_id", 1], ["created_at", "2020-11-10 10:44:30.700912"], ["updated_at", "2020-11-10 10:44:30.700912"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Going backwards in an Array"], ["body", "It's possible to use negative numbers as backwards indexes in Arrays e.g. [1,2,3,4][-1] => 4"], ["user_id", 1], ["created_at", "2020-11-10 10:44:30.705205"], ["updated_at", "2020-11-10 10:44:30.705205"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Using ERB in CSS and Sass files"], ["body", "Did you know that you can define CSS assets as ERB files, just like .html.erb and .js.erb views?  By using .scss.erb as the extension of a file, the asset pipeline will first process the file as ERB and evaluate Ruby expressions.  Then it will treat the file as Sass and compile it to CSS!"], ["user_id", 2], ["created_at", "2020-11-10 10:44:30.708479"], ["updated_at", "2020-11-10 10:44:30.708479"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Substitute a value in a String"], ["body", "String#gsub can be used to replace any substring with another substring in a String, e.g. 'Learn about :language'.gsub(':language', 'JavaScript') => \"Learn about JavaScript\""], ["user_id", 2], ["created_at", "2020-11-10 10:44:30.711359"], ["updated_at", "2020-11-10 10:44:30.711359"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Multi-line Strings using %Q"], ["body", "It's possible to create a String on multiple lines using %Q( ... ).\n\nBy defining the String in %Q, a String can span several lines.\n\nThis is just basic \"newline\" markers and won't convert to new lines in HTML, which needs the use\nof <br /> or more appropriate markup."], ["user_id", 2], ["created_at", "2020-11-10 10:44:30.714192"], ["updated_at", "2020-11-10 10:44:30.714192"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Using underscores in numbers"], ["body", "It's pretty cool that underscores can be used to define numbers in Ruby, such as 16_453 or 12_345_678.  It can make big numbers much more readable!"], ["user_id", 2], ["created_at", "2020-11-10 10:44:30.716749"], ["updated_at", "2020-11-10 10:44:30.716749"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Calculate a number to a power"], ["body", "Use ** to calculate the number to a particular power, e.g. 2**5 => 32"], ["user_id", 2], ["created_at", "2020-11-10 10:44:30.720221"], ["updated_at", "2020-11-10 10:44:30.720221"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Using rails:secret"], ["body", "Use rails:secret to generate a long secret key for any purpose, not just for a value to use as SECRET_KEY_BASE."], ["user_id", 3], ["created_at", "2020-11-10 10:44:30.722922"], ["updated_at", "2020-11-10 10:44:30.722922"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Try using grep with log files"], ["body", "grep is a terminal program that can be used to search log files for a particular pattern.  It takes a search term as a regular expression and is therefore very powerful.  Learning about regular expressions is very useful for other tasks as well; they are often used in Rails model validations, route definitions and in JavaScript"], ["user_id", 3], ["created_at", "2020-11-10 10:44:30.725494"], ["updated_at", "2020-11-10 10:44:30.725494"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Organize CSS rules in Sass files well"], ["body", "It's worth taking the time to organize CSS rules in various Sass files, keeping related rules together.  It helps someone new to a project know where to look for particular rules."], ["user_id", 3], ["created_at", "2020-11-10 10:44:30.728608"], ["updated_at", "2020-11-10 10:44:30.728608"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Just experiment!"], ["body", "The great thing about writing software is that it's easy to try things out and change them before submitting it for a production deployment.  I've found that taking a break and coming back to a difficult programming problem really helps too."], ["user_id", 3], ["created_at", "2020-11-10 10:44:30.731781"], ["updated_at", "2020-11-10 10:44:30.731781"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTip Load (0.1ms)[0m  [1m[34mSELECT  "tips".* FROM "tips" WHERE "tips"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "comments" ("body", "user_id", "tip_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["body", "Thank you! It will help to develop my new program much faster!"], ["user_id", 2], ["tip_id", 2], ["created_at", "2020-11-10 10:44:30.775934"], ["updated_at", "2020-11-10 10:44:30.775934"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_comments_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_comments_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_comments_on_tip_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_comments_on_tip_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_tips_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_tips_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "florian@extensionschool.ch"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "comments"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE TABLE "comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "body" varchar, "user_id" integer, "tip_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE  INDEX "index_comments_on_tip_id" ON "comments" ("tip_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_comments_on_tip_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_comments_on_tip_id' AND type='index'
+[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE  INDEX "index_comments_on_user_id" ON "comments" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "tips"[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "tips" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "body" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE  INDEX "index_tips_on_user_id" ON "tips" ("user_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "tips_users"[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "tips_users" ("tip_id" integer NOT NULL, "user_id" integer NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "users"[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar, "name" varchar, "avatar_url" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20180125102303)[0m
+  [1m[35m (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20180124172950),
+(20180124172525),
+(20180124173831);
+
+[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-11-10 10:45:32.660729"], ["updated_at", "2020-11-10 10:45:32.660729"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "comments"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "body" varchar, "user_id" integer, "tip_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE  INDEX "index_comments_on_tip_id" ON "comments" ("tip_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_comments_on_tip_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_comments_on_tip_id' AND type='index'
+[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE  INDEX "index_comments_on_user_id" ON "comments" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "tips"[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "tips" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "body" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE  INDEX "index_tips_on_user_id" ON "tips" ("user_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "tips_users"[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "tips_users" ("tip_id" integer NOT NULL, "user_id" integer NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "users"[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar, "name" varchar, "avatar_url" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20180125102303)[0m
+  [1m[35m (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20180124172950),
+(20180124172525),
+(20180124173831);
+
+[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-11-10 10:45:32.686057"], ["updated_at", "2020-11-10 10:45:32.686057"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "florian@extensionschool.ch"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "florian@extensionschool.ch"], ["name", "Florian"], ["created_at", "2020-11-10 10:45:32.716729"], ["updated_at", "2020-11-10 10:45:32.716729"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "sara@extensionschool.ch"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "sara@extensionschool.ch"], ["name", "Sara"], ["created_at", "2020-11-10 10:45:32.719601"], ["updated_at", "2020-11-10 10:45:32.719601"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "linda@extensionschool.ch"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "linda@extensionschool.ch"], ["name", "Linda"], ["created_at", "2020-11-10 10:45:32.721718"], ["updated_at", "2020-11-10 10:45:32.721718"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Use #name on a class in Ruby"], ["body", "Using Class.name returns a String representing the name of a class!  E.g. Integer.name returns \"Integer\" and ApplicationController.name returns \"ApplicationController\""], ["user_id", 1], ["created_at", "2020-11-10 10:45:32.752079"], ["updated_at", "2020-11-10 10:45:32.752079"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Getting a substring in Ruby"], ["body", "Use String#[start,length] to return the substring of a String, e.g. \"Hello, world\"[7,5] => \"world\""], ["user_id", 1], ["created_at", "2020-11-10 10:45:32.754693"], ["updated_at", "2020-11-10 10:45:32.754693"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Going backwards in an Array"], ["body", "It's possible to use negative numbers as backwards indexes in Arrays e.g. [1,2,3,4][-1] => 4"], ["user_id", 1], ["created_at", "2020-11-10 10:45:32.756861"], ["updated_at", "2020-11-10 10:45:32.756861"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Using ERB in CSS and Sass files"], ["body", "Did you know that you can define CSS assets as ERB files, just like .html.erb and .js.erb views?  By using .scss.erb as the extension of a file, the asset pipeline will first process the file as ERB and evaluate Ruby expressions.  Then it will treat the file as Sass and compile it to CSS!"], ["user_id", 2], ["created_at", "2020-11-10 10:45:32.759009"], ["updated_at", "2020-11-10 10:45:32.759009"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Substitute a value in a String"], ["body", "String#gsub can be used to replace any substring with another substring in a String, e.g. 'Learn about :language'.gsub(':language', 'JavaScript') => \"Learn about JavaScript\""], ["user_id", 2], ["created_at", "2020-11-10 10:45:32.761128"], ["updated_at", "2020-11-10 10:45:32.761128"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Multi-line Strings using %Q"], ["body", "It's possible to create a String on multiple lines using %Q( ... ).\n\nBy defining the String in %Q, a String can span several lines.\n\nThis is just basic \"newline\" markers and won't convert to new lines in HTML, which needs the use\nof <br /> or more appropriate markup."], ["user_id", 2], ["created_at", "2020-11-10 10:45:32.763213"], ["updated_at", "2020-11-10 10:45:32.763213"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Using underscores in numbers"], ["body", "It's pretty cool that underscores can be used to define numbers in Ruby, such as 16_453 or 12_345_678.  It can make big numbers much more readable!"], ["user_id", 2], ["created_at", "2020-11-10 10:45:32.765423"], ["updated_at", "2020-11-10 10:45:32.765423"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Calculate a number to a power"], ["body", "Use ** to calculate the number to a particular power, e.g. 2**5 => 32"], ["user_id", 2], ["created_at", "2020-11-10 10:45:32.767342"], ["updated_at", "2020-11-10 10:45:32.767342"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Using rails:secret"], ["body", "Use rails:secret to generate a long secret key for any purpose, not just for a value to use as SECRET_KEY_BASE."], ["user_id", 3], ["created_at", "2020-11-10 10:45:32.769269"], ["updated_at", "2020-11-10 10:45:32.769269"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Try using grep with log files"], ["body", "grep is a terminal program that can be used to search log files for a particular pattern.  It takes a search term as a regular expression and is therefore very powerful.  Learning about regular expressions is very useful for other tasks as well; they are often used in Rails model validations, route definitions and in JavaScript"], ["user_id", 3], ["created_at", "2020-11-10 10:45:32.770779"], ["updated_at", "2020-11-10 10:45:32.770779"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Organize CSS rules in Sass files well"], ["body", "It's worth taking the time to organize CSS rules in various Sass files, keeping related rules together.  It helps someone new to a project know where to look for particular rules."], ["user_id", 3], ["created_at", "2020-11-10 10:45:32.772292"], ["updated_at", "2020-11-10 10:45:32.772292"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Just experiment!"], ["body", "The great thing about writing software is that it's easy to try things out and change them before submitting it for a production deployment.  I've found that taking a break and coming back to a difficult programming problem really helps too."], ["user_id", 3], ["created_at", "2020-11-10 10:45:32.774190"], ["updated_at", "2020-11-10 10:45:32.774190"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTip Load (0.1ms)[0m  [1m[34mSELECT  "tips".* FROM "tips" WHERE "tips"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "comments" ("body", "user_id", "tip_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["body", "Thank you! It will help to develop my new program much faster!"], ["user_id", 2], ["tip_id", 2], ["created_at", "2020-11-10 10:45:32.800698"], ["updated_at", "2020-11-10 10:45:32.800698"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_comments_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_comments_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_comments_on_tip_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_comments_on_tip_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_tips_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_tips_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "florian@extensionschool.ch"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (1.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "comments"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "body" varchar, "user_id" integer, "tip_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE  INDEX "index_comments_on_tip_id" ON "comments" ("tip_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_comments_on_tip_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_comments_on_tip_id' AND type='index'
+[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE  INDEX "index_comments_on_user_id" ON "comments" ("user_id")[0m
+  [1m[35m (0.7ms)[0m  [1m[35mDROP TABLE IF EXISTS "tips"[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "tips" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "body" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE  INDEX "index_tips_on_user_id" ON "tips" ("user_id")[0m
+  [1m[35m (1.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "tips_users"[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "tips_users" ("tip_id" integer NOT NULL, "user_id" integer NOT NULL)[0m
+  [1m[35m (0.9ms)[0m  [1m[35mDROP TABLE IF EXISTS "users"[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar, "name" varchar, "avatar_url" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.9ms)[0m  [1m[35mDROP TABLE IF EXISTS "comments"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "body" varchar, "user_id" integer, "tip_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE  INDEX "index_comments_on_tip_id" ON "comments" ("tip_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_comments_on_tip_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_comments_on_tip_id' AND type='index'
+[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE  INDEX "index_comments_on_user_id" ON "comments" ("user_id")[0m
+  [1m[35m (0.9ms)[0m  [1m[35mDROP TABLE IF EXISTS "tips"[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "tips" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "body" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE  INDEX "index_tips_on_user_id" ON "tips" ("user_id")[0m
+  [1m[35m (0.8ms)[0m  [1m[35mDROP TABLE IF EXISTS "tips_users"[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "tips_users" ("tip_id" integer NOT NULL, "user_id" integer NOT NULL)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "users"[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar, "name" varchar, "avatar_url" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "florian@extensionschool.ch"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "florian@extensionschool.ch"], ["name", "Florian"], ["created_at", "2020-11-10 10:47:00.163314"], ["updated_at", "2020-11-10 10:47:00.163314"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "sara@extensionschool.ch"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "sara@extensionschool.ch"], ["name", "Sara"], ["created_at", "2020-11-10 10:47:00.166555"], ["updated_at", "2020-11-10 10:47:00.166555"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "linda@extensionschool.ch"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "linda@extensionschool.ch"], ["name", "Linda"], ["created_at", "2020-11-10 10:47:00.169323"], ["updated_at", "2020-11-10 10:47:00.169323"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Use #name on a class in Ruby"], ["body", "Using Class.name returns a String representing the name of a class!  E.g. Integer.name returns \"Integer\" and ApplicationController.name returns \"ApplicationController\""], ["user_id", 1], ["created_at", "2020-11-10 10:47:00.180375"], ["updated_at", "2020-11-10 10:47:00.180375"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Getting a substring in Ruby"], ["body", "Use String#[start,length] to return the substring of a String, e.g. \"Hello, world\"[7,5] => \"world\""], ["user_id", 1], ["created_at", "2020-11-10 10:47:00.182632"], ["updated_at", "2020-11-10 10:47:00.182632"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Going backwards in an Array"], ["body", "It's possible to use negative numbers as backwards indexes in Arrays e.g. [1,2,3,4][-1] => 4"], ["user_id", 1], ["created_at", "2020-11-10 10:47:00.184666"], ["updated_at", "2020-11-10 10:47:00.184666"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Using ERB in CSS and Sass files"], ["body", "Did you know that you can define CSS assets as ERB files, just like .html.erb and .js.erb views?  By using .scss.erb as the extension of a file, the asset pipeline will first process the file as ERB and evaluate Ruby expressions.  Then it will treat the file as Sass and compile it to CSS!"], ["user_id", 2], ["created_at", "2020-11-10 10:47:00.186589"], ["updated_at", "2020-11-10 10:47:00.186589"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Substitute a value in a String"], ["body", "String#gsub can be used to replace any substring with another substring in a String, e.g. 'Learn about :language'.gsub(':language', 'JavaScript') => \"Learn about JavaScript\""], ["user_id", 2], ["created_at", "2020-11-10 10:47:00.190081"], ["updated_at", "2020-11-10 10:47:00.190081"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Multi-line Strings using %Q"], ["body", "It's possible to create a String on multiple lines using %Q( ... ).\n\nBy defining the String in %Q, a String can span several lines.\n\nThis is just basic \"newline\" markers and won't convert to new lines in HTML, which needs the use\nof <br /> or more appropriate markup."], ["user_id", 2], ["created_at", "2020-11-10 10:47:00.192286"], ["updated_at", "2020-11-10 10:47:00.192286"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Using underscores in numbers"], ["body", "It's pretty cool that underscores can be used to define numbers in Ruby, such as 16_453 or 12_345_678.  It can make big numbers much more readable!"], ["user_id", 2], ["created_at", "2020-11-10 10:47:00.194990"], ["updated_at", "2020-11-10 10:47:00.194990"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Calculate a number to a power"], ["body", "Use ** to calculate the number to a particular power, e.g. 2**5 => 32"], ["user_id", 2], ["created_at", "2020-11-10 10:47:00.198384"], ["updated_at", "2020-11-10 10:47:00.198384"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Using rails:secret"], ["body", "Use rails:secret to generate a long secret key for any purpose, not just for a value to use as SECRET_KEY_BASE."], ["user_id", 3], ["created_at", "2020-11-10 10:47:00.201498"], ["updated_at", "2020-11-10 10:47:00.201498"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Try using grep with log files"], ["body", "grep is a terminal program that can be used to search log files for a particular pattern.  It takes a search term as a regular expression and is therefore very powerful.  Learning about regular expressions is very useful for other tasks as well; they are often used in Rails model validations, route definitions and in JavaScript"], ["user_id", 3], ["created_at", "2020-11-10 10:47:00.205176"], ["updated_at", "2020-11-10 10:47:00.205176"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Organize CSS rules in Sass files well"], ["body", "It's worth taking the time to organize CSS rules in various Sass files, keeping related rules together.  It helps someone new to a project know where to look for particular rules."], ["user_id", 3], ["created_at", "2020-11-10 10:47:00.207500"], ["updated_at", "2020-11-10 10:47:00.207500"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Just experiment!"], ["body", "The great thing about writing software is that it's easy to try things out and change them before submitting it for a production deployment.  I've found that taking a break and coming back to a difficult programming problem really helps too."], ["user_id", 3], ["created_at", "2020-11-10 10:47:00.209857"], ["updated_at", "2020-11-10 10:47:00.209857"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTip Load (0.1ms)[0m  [1m[34mSELECT  "tips".* FROM "tips" WHERE "tips"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "comments" ("body", "user_id", "tip_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["body", "Thank you! It will help to develop my new program much faster!"], ["user_id", 2], ["tip_id", 2], ["created_at", "2020-11-10 10:47:00.242049"], ["updated_at", "2020-11-10 10:47:00.242049"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "florian@extensionschool.ch"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+Started GET "/" for 127.0.0.1 at 2020-11-10 11:50:03 +0100
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mTip Load (0.2ms)[0m  [1m[34mSELECT  "tips".* FROM "tips" ORDER BY "tips"."updated_at" DESC LIMIT ?[0m  [["LIMIT", 4]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered application/_user_link.html.erb (0.7ms)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 12]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 12]]
+  Rendered application/_tip_card.html.erb (23.2ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered application/_user_link.html.erb (0.3ms)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 11]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 11]]
+  Rendered application/_tip_card.html.erb (4.2ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered application/_user_link.html.erb (0.3ms)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 10]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 10]]
+  Rendered application/_tip_card.html.erb (4.1ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered application/_user_link.html.erb (0.2ms)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 9]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 9]]
+  Rendered application/_tip_card.html.erb (2.9ms)
+  Rendered home/index.html.erb within layouts/application (47.0ms)
+  Rendered application/_anonymous_user_header.html.erb (0.3ms)
+  Rendered application/_header.html.erb (1.9ms)
+  Rendered application/_footer.html.erb (0.2ms)
+Completed 200 OK in 84ms (Views: 76.8ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/tips?utf8=%E2%9C%93&q=substring&commit=Search" for 127.0.0.1 at 2020-11-10 11:50:17 +0100
+Processing by TipsController#index as HTML
+  Parameters: {"utf8"=>"✓", "q"=>"substring", "commit"=>"Search"}
+  Rendering tips/index.html.erb within layouts/application
+  [1m[36mTip Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "tips" WHERE ((title LIKE '%substring%') OR (body LIKE '%substring%')) LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTip Load (0.1ms)[0m  [1m[34mSELECT "tips".* FROM "tips" WHERE ((title LIKE '%substring%') OR (body LIKE '%substring%'))[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered application/_user_link.html.erb (0.5ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 2]]
+  Rendered application/_tip_card.html.erb (4.1ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered application/_user_link.html.erb (0.2ms)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 5]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 5]]
+  Rendered application/_tip_card.html.erb (3.2ms)
+  Rendered tips/index.html.erb within layouts/application (10.9ms)
+  Rendered application/_anonymous_user_header.html.erb (0.3ms)
+  Rendered application/_header.html.erb (1.6ms)
+  Rendered application/_footer.html.erb (0.2ms)
+Completed 200 OK in 34ms (Views: 31.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/tips/2" for 127.0.0.1 at 2020-11-10 11:50:20 +0100
+Processing by TipsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTip Load (0.2ms)[0m  [1m[34mSELECT  "tips".* FROM "tips" WHERE "tips"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering tips/show.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered application/_user_link.html.erb (0.5ms)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."tip_id" = ? ORDER BY "comments"."created_at" ASC[0m  [["tip_id", 2]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered application/_user_link.html.erb (0.2ms)
+  Rendered tips/show.html.erb within layouts/application (21.2ms)
+  Rendered application/_anonymous_user_header.html.erb (0.4ms)
+  Rendered application/_header.html.erb (1.7ms)
+  Rendered application/_footer.html.erb (0.4ms)
+Completed 200 OK in 46ms (Views: 42.5ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/tips/2" for 127.0.0.1 at 2020-11-10 12:07:48 +0100
+Processing by TipsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTip Load (0.1ms)[0m  [1m[34mSELECT  "tips".* FROM "tips" WHERE "tips"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering tips/show.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered application/_user_link.html.erb (0.4ms)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."tip_id" = ? ORDER BY "comments"."created_at" ASC[0m  [["tip_id", 2]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered application/_user_link.html.erb (0.1ms)
+  Rendered tips/show.html.erb within layouts/application (7.2ms)
+  Rendered application/_anonymous_user_header.html.erb (0.6ms)
+  Rendered application/_header.html.erb (2.6ms)
+  Rendered application/_footer.html.erb (0.3ms)
+Completed 200 OK in 40ms (Views: 37.3ms | ActiveRecord: 0.5ms)
+
+
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (1.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "comments"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "body" varchar, "user_id" integer, "tip_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE  INDEX "index_comments_on_tip_id" ON "comments" ("tip_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_comments_on_tip_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_comments_on_tip_id' AND type='index'
+[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE  INDEX "index_comments_on_user_id" ON "comments" ("user_id")[0m
+  [1m[35m (0.9ms)[0m  [1m[35mDROP TABLE IF EXISTS "tips"[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "tips" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "body" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE  INDEX "index_tips_on_user_id" ON "tips" ("user_id")[0m
+  [1m[35m (0.7ms)[0m  [1m[35mDROP TABLE IF EXISTS "tips_users"[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "tips_users" ("tip_id" integer NOT NULL, "user_id" integer NOT NULL)[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE IF EXISTS "users"[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar, "name" varchar, "avatar_url" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.8ms)[0m  [1m[35mDROP TABLE IF EXISTS "comments"[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "body" varchar, "user_id" integer, "tip_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE  INDEX "index_comments_on_tip_id" ON "comments" ("tip_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_comments_on_tip_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_comments_on_tip_id' AND type='index'
+[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE  INDEX "index_comments_on_user_id" ON "comments" ("user_id")[0m
+  [1m[35m (1.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "tips"[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "tips" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "body" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE  INDEX "index_tips_on_user_id" ON "tips" ("user_id")[0m
+  [1m[35m (0.9ms)[0m  [1m[35mDROP TABLE IF EXISTS "tips_users"[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "tips_users" ("tip_id" integer NOT NULL, "user_id" integer NOT NULL)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mDROP TABLE IF EXISTS "users"[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar, "name" varchar, "avatar_url" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "comments"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "body" varchar, "user_id" integer, "tip_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE  INDEX "index_comments_on_tip_id" ON "comments" ("tip_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_comments_on_tip_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_comments_on_tip_id' AND type='index'
+[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE  INDEX "index_comments_on_user_id" ON "comments" ("user_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "tips"[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE TABLE "tips" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "body" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE  INDEX "index_tips_on_user_id" ON "tips" ("user_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "tips_users"[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "tips_users" ("tip_id" integer NOT NULL, "user_id" integer NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "users"[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar, "name" varchar, "avatar_url" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20180125102303)[0m
+  [1m[35m (1.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20180124172950),
+(20180124172525),
+(20180124173831);
+
+[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-11-10 11:08:09.954322"], ["updated_at", "2020-11-10 11:08:09.954322"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "comments"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE "comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "body" varchar, "user_id" integer, "tip_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE  INDEX "index_comments_on_tip_id" ON "comments" ("tip_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_comments_on_tip_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_comments_on_tip_id' AND type='index'
+[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE  INDEX "index_comments_on_user_id" ON "comments" ("user_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "tips"[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "tips" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "body" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE  INDEX "index_tips_on_user_id" ON "tips" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "tips_users"[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "tips_users" ("tip_id" integer NOT NULL, "user_id" integer NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "users"[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar, "name" varchar, "avatar_url" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20180125102303)[0m
+  [1m[35m (1.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20180124172950),
+(20180124172525),
+(20180124173831);
+
+[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-11-10 11:08:09.981466"], ["updated_at", "2020-11-10 11:08:09.981466"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (1.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "comments"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "body" varchar, "user_id" integer, "tip_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE  INDEX "index_comments_on_tip_id" ON "comments" ("tip_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_comments_on_tip_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_comments_on_tip_id' AND type='index'
+[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE  INDEX "index_comments_on_user_id" ON "comments" ("user_id")[0m
+  [1m[35m (0.9ms)[0m  [1m[35mDROP TABLE IF EXISTS "tips"[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "tips" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "body" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE  INDEX "index_tips_on_user_id" ON "tips" ("user_id")[0m
+  [1m[35m (0.8ms)[0m  [1m[35mDROP TABLE IF EXISTS "tips_users"[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "tips_users" ("tip_id" integer NOT NULL, "user_id" integer NOT NULL)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "users"[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar, "name" varchar, "avatar_url" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (1.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "comments"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "comments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "body" varchar, "user_id" integer, "tip_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE  INDEX "index_comments_on_tip_id" ON "comments" ("tip_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_comments_on_tip_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_comments_on_tip_id' AND type='index'
+[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE  INDEX "index_comments_on_user_id" ON "comments" ("user_id")[0m
+  [1m[35m (1.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "tips"[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "tips" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "body" varchar, "user_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE  INDEX "index_tips_on_user_id" ON "tips" ("user_id")[0m
+  [1m[35m (0.8ms)[0m  [1m[35mDROP TABLE IF EXISTS "tips_users"[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "tips_users" ("tip_id" integer NOT NULL, "user_id" integer NOT NULL)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mDROP TABLE IF EXISTS "users"[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar, "name" varchar, "avatar_url" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "florian@extensionschool.ch"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "florian@extensionschool.ch"], ["name", "Florian"], ["created_at", "2020-11-10 11:08:33.939256"], ["updated_at", "2020-11-10 11:08:33.939256"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "sara@extensionschool.ch"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "sara@extensionschool.ch"], ["name", "Sara"], ["created_at", "2020-11-10 11:08:33.942203"], ["updated_at", "2020-11-10 11:08:33.942203"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "linda@extensionschool.ch"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "linda@extensionschool.ch"], ["name", "Linda"], ["created_at", "2020-11-10 11:08:33.944722"], ["updated_at", "2020-11-10 11:08:33.944722"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Use #name on a class in Ruby"], ["body", "Using Class.name returns a String representing the name of a class!  E.g. Integer.name returns \"Integer\" and ApplicationController.name returns \"ApplicationController\""], ["user_id", 1], ["created_at", "2020-11-10 11:08:33.960681"], ["updated_at", "2020-11-10 11:08:33.960681"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Getting a substring in Ruby"], ["body", "Use String#[start,length] to return the substring of a String, e.g. \"Hello, world\"[7,5] => \"world\""], ["user_id", 1], ["created_at", "2020-11-10 11:08:33.963977"], ["updated_at", "2020-11-10 11:08:33.963977"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Going backwards in an Array"], ["body", "It's possible to use negative numbers as backwards indexes in Arrays e.g. [1,2,3,4][-1] => 4"], ["user_id", 1], ["created_at", "2020-11-10 11:08:33.967033"], ["updated_at", "2020-11-10 11:08:33.967033"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Using ERB in CSS and Sass files"], ["body", "Did you know that you can define CSS assets as ERB files, just like .html.erb and .js.erb views?  By using .scss.erb as the extension of a file, the asset pipeline will first process the file as ERB and evaluate Ruby expressions.  Then it will treat the file as Sass and compile it to CSS!"], ["user_id", 2], ["created_at", "2020-11-10 11:08:33.970282"], ["updated_at", "2020-11-10 11:08:33.970282"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Substitute a value in a String"], ["body", "String#gsub can be used to replace any substring with another substring in a String, e.g. 'Learn about :language'.gsub(':language', 'JavaScript') => \"Learn about JavaScript\""], ["user_id", 2], ["created_at", "2020-11-10 11:08:33.974110"], ["updated_at", "2020-11-10 11:08:33.974110"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Multi-line Strings using %Q"], ["body", "It's possible to create a String on multiple lines using %Q( ... ).\n\nBy defining the String in %Q, a String can span several lines.\n\nThis is just basic \"newline\" markers and won't convert to new lines in HTML, which needs the use\nof <br /> or more appropriate markup."], ["user_id", 2], ["created_at", "2020-11-10 11:08:33.977100"], ["updated_at", "2020-11-10 11:08:33.977100"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Using underscores in numbers"], ["body", "It's pretty cool that underscores can be used to define numbers in Ruby, such as 16_453 or 12_345_678.  It can make big numbers much more readable!"], ["user_id", 2], ["created_at", "2020-11-10 11:08:33.979767"], ["updated_at", "2020-11-10 11:08:33.979767"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Calculate a number to a power"], ["body", "Use ** to calculate the number to a particular power, e.g. 2**5 => 32"], ["user_id", 2], ["created_at", "2020-11-10 11:08:33.982478"], ["updated_at", "2020-11-10 11:08:33.982478"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Using rails:secret"], ["body", "Use rails:secret to generate a long secret key for any purpose, not just for a value to use as SECRET_KEY_BASE."], ["user_id", 3], ["created_at", "2020-11-10 11:08:33.985229"], ["updated_at", "2020-11-10 11:08:33.985229"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Try using grep with log files"], ["body", "grep is a terminal program that can be used to search log files for a particular pattern.  It takes a search term as a regular expression and is therefore very powerful. Learning about regular expressions is very useful for other tasks as well; they are often used in Rails model validations, route definitions and in JavaScript"], ["user_id", 3], ["created_at", "2020-11-10 11:08:33.988216"], ["updated_at", "2020-11-10 11:08:33.988216"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Organize CSS rules in Sass files well"], ["body", "It's worth taking the time to organize CSS rules in various Sass files, keeping related rules together.  It helps someone new to a project know where to look for particular rules."], ["user_id", 3], ["created_at", "2020-11-10 11:08:33.990482"], ["updated_at", "2020-11-10 11:08:33.990482"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Just experiment!"], ["body", "The great thing about writing software is that it's easy to try things out and change them before submitting it for a production deployment.  I've found that taking a break and coming back to a difficult programming problem really helps too."], ["user_id", 3], ["created_at", "2020-11-10 11:08:33.993406"], ["updated_at", "2020-11-10 11:08:33.993406"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTip Load (0.1ms)[0m  [1m[34mSELECT  "tips".* FROM "tips" WHERE "tips"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "comments" ("body", "user_id", "tip_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["body", "Thank you! It will help to develop my new program much faster!"], ["user_id", 2], ["tip_id", 2], ["created_at", "2020-11-10 11:08:34.023371"], ["updated_at", "2020-11-10 11:08:34.023371"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTip Load (0.1ms)[0m  [1m[34mSELECT  "tips".* FROM "tips" WHERE "tips"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "comments" ("body", "user_id", "tip_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["body", "I have spent days on this! I cannot believe that it is this easy to do!"], ["user_id", 3], ["tip_id", 2], ["created_at", "2020-11-10 11:08:34.027819"], ["updated_at", "2020-11-10 11:08:34.027819"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTip Load (0.1ms)[0m  [1m[34mSELECT  "tips".* FROM "tips" WHERE "tips"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "comments" ("body", "user_id", "tip_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["body", "Can you explain more about it? I am curious where can I use secret value other than SECRET_KEY_BASE."], ["user_id", 2], ["tip_id", 9], ["created_at", "2020-11-10 11:08:34.031571"], ["updated_at", "2020-11-10 11:08:34.031571"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTip Load (0.1ms)[0m  [1m[34mSELECT  "tips".* FROM "tips" WHERE "tips"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "comments" ("body", "user_id", "tip_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["body", "I was quite sick of writing so long lines. Thanks for the information!"], ["user_id", 1], ["tip_id", 6], ["created_at", "2020-11-10 11:08:34.034976"], ["updated_at", "2020-11-10 11:08:34.034976"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTip Load (0.1ms)[0m  [1m[34mSELECT  "tips".* FROM "tips" WHERE "tips"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "comments" ("body", "user_id", "tip_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["body", "You're welcome. Glad to help! :)"], ["user_id", 2], ["tip_id", 6], ["created_at", "2020-11-10 11:08:34.052185"], ["updated_at", "2020-11-10 11:08:34.052185"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/tips/2" for 127.0.0.1 at 2020-11-10 12:08:37 +0100
+Processing by TipsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTip Load (0.3ms)[0m  [1m[34mSELECT  "tips".* FROM "tips" WHERE "tips"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+Completed 404 Not Found in 1ms (ActiveRecord: 0.3ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Tip with 'id'=2):
+  
+app/controllers/tips_controller.rb:60:in `set_tip'
+Started GET "/tips/2" for 127.0.0.1 at 2020-11-10 12:08:58 +0100
+Processing by TipsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTip Load (0.1ms)[0m  [1m[34mSELECT  "tips".* FROM "tips" WHERE "tips"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+Completed 404 Not Found in 1ms (ActiveRecord: 0.1ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Tip with 'id'=2):
+  
+app/controllers/tips_controller.rb:60:in `set_tip'
+Started GET "/" for 127.0.0.1 at 2020-11-10 12:09:00 +0100
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mTip Load (0.2ms)[0m  [1m[34mSELECT  "tips".* FROM "tips" ORDER BY "tips"."updated_at" DESC LIMIT ?[0m  [["LIMIT", 4]]
+  Rendered home/index.html.erb within layouts/application (1.5ms)
+  Rendered application/_anonymous_user_header.html.erb (0.3ms)
+  Rendered application/_header.html.erb (2.0ms)
+  Rendered application/_footer.html.erb (0.4ms)
+Completed 200 OK in 33ms (Views: 31.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2020-11-10 12:09:14 +0100
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mTip Load (0.3ms)[0m  [1m[34mSELECT  "tips".* FROM "tips" ORDER BY "tips"."updated_at" DESC LIMIT ?[0m  [["LIMIT", 4]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered application/_user_link.html.erb (0.6ms)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 12]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 12]]
+  Rendered application/_tip_card.html.erb (39.2ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered application/_user_link.html.erb (0.2ms)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 11]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 11]]
+  Rendered application/_tip_card.html.erb (6.4ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered application/_user_link.html.erb (0.5ms)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 10]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 10]]
+  Rendered application/_tip_card.html.erb (4.1ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered application/_user_link.html.erb (0.2ms)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 9]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 9]]
+  Rendered application/_tip_card.html.erb (5.7ms)
+  Rendered home/index.html.erb within layouts/application (69.8ms)
+  Rendered application/_anonymous_user_header.html.erb (0.4ms)
+  Rendered application/_header.html.erb (2.2ms)
+  Rendered application/_footer.html.erb (0.4ms)
+Completed 200 OK in 368ms (Views: 343.2ms | ActiveRecord: 4.6ms)
+
+
+Started GET "/tips?utf8=%E2%9C%93&q=&commit=Search" for 127.0.0.1 at 2020-11-10 12:09:18 +0100
+Processing by TipsController#index as HTML
+  Parameters: {"utf8"=>"✓", "q"=>"", "commit"=>"Search"}
+  Rendering tips/index.html.erb within layouts/application
+  [1m[36mTip Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "tips" WHERE ((title LIKE '%%') OR (body LIKE '%%')) LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTip Load (0.3ms)[0m  [1m[34mSELECT "tips".* FROM "tips" WHERE ((title LIKE '%%') OR (body LIKE '%%'))[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered application/_user_link.html.erb (1.1ms)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 1]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 1]]
+  Rendered application/_tip_card.html.erb (7.1ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered application/_user_link.html.erb (0.2ms)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 2]]
+  Rendered application/_tip_card.html.erb (3.2ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered application/_user_link.html.erb (0.3ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 3]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 3]]
+  Rendered application/_tip_card.html.erb (10.4ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered application/_user_link.html.erb (0.2ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 4]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 4]]
+  Rendered application/_tip_card.html.erb (7.8ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered application/_user_link.html.erb (0.4ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 5]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 5]]
+  Rendered application/_tip_card.html.erb (4.7ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered application/_user_link.html.erb (0.2ms)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 6]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 6]]
+  Rendered application/_tip_card.html.erb (4.6ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered application/_user_link.html.erb (0.2ms)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 7]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 7]]
+  Rendered application/_tip_card.html.erb (4.5ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered application/_user_link.html.erb (0.2ms)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 8]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 8]]
+  Rendered application/_tip_card.html.erb (4.7ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered application/_user_link.html.erb (0.3ms)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 9]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 9]]
+  Rendered application/_tip_card.html.erb (5.2ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered application/_user_link.html.erb (0.2ms)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 10]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 10]]
+  Rendered application/_tip_card.html.erb (4.9ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered application/_user_link.html.erb (0.2ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 11]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 11]]
+  Rendered application/_tip_card.html.erb (5.2ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered application/_user_link.html.erb (0.4ms)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 12]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 12]]
+  Rendered application/_tip_card.html.erb (5.9ms)
+  Rendered tips/index.html.erb within layouts/application (87.4ms)
+  Rendered application/_anonymous_user_header.html.erb (0.5ms)
+  Rendered application/_header.html.erb (2.0ms)
+  Rendered application/_footer.html.erb (0.3ms)
+Completed 200 OK in 120ms (Views: 113.0ms | ActiveRecord: 5.0ms)
+
+
+Started GET "/tips/6" for 127.0.0.1 at 2020-11-10 12:09:23 +0100
+Processing by TipsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mTip Load (0.2ms)[0m  [1m[34mSELECT  "tips".* FROM "tips" WHERE "tips"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering tips/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered application/_user_link.html.erb (1.3ms)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."tip_id" = ? ORDER BY "comments"."created_at" ASC[0m  [["tip_id", 6]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered application/_user_link.html.erb (0.2ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered application/_user_link.html.erb (0.2ms)
+  Rendered tips/show.html.erb within layouts/application (47.9ms)
+  Rendered application/_anonymous_user_header.html.erb (0.4ms)
+  Rendered application/_header.html.erb (2.0ms)
+  Rendered application/_footer.html.erb (0.3ms)
+Completed 200 OK in 95ms (Views: 90.7ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2020-11-10 12:11:21 +0100
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mTip Load (0.4ms)[0m  [1m[34mSELECT  "tips".* FROM "tips" ORDER BY "tips"."updated_at" DESC LIMIT ?[0m  [["LIMIT", 4]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered application/_user_link.html.erb (0.6ms)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 12]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 12]]
+  Rendered application/_tip_card.html.erb (5.9ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered application/_user_link.html.erb (0.2ms)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 11]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 11]]
+  Rendered application/_tip_card.html.erb (4.0ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered application/_user_link.html.erb (0.2ms)
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 10]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 10]]
+  Rendered application/_tip_card.html.erb (5.3ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered application/_user_link.html.erb (0.2ms)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 9]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 9]]
+  Rendered application/_tip_card.html.erb (3.5ms)
+  Rendered home/index.html.erb within layouts/application (24.6ms)
+  Rendered application/_anonymous_user_header.html.erb (0.7ms)
+  Rendered application/_header.html.erb (2.7ms)
+  Rendered application/_footer.html.erb (0.5ms)
+Completed 200 OK in 55ms (Views: 52.3ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/tips?utf8=%E2%9C%93&q=&commit=Search" for 127.0.0.1 at 2020-11-10 12:11:36 +0100
+Processing by TipsController#index as HTML
+  Parameters: {"utf8"=>"✓", "q"=>"", "commit"=>"Search"}
+  Rendering tips/index.html.erb within layouts/application
+  [1m[36mTip Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "tips" WHERE ((title LIKE '%%') OR (body LIKE '%%')) LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTip Load (0.2ms)[0m  [1m[34mSELECT "tips".* FROM "tips" WHERE ((title LIKE '%%') OR (body LIKE '%%'))[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered application/_user_link.html.erb (0.8ms)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 1]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 1]]
+  Rendered application/_tip_card.html.erb (6.5ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered application/_user_link.html.erb (0.2ms)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 2]]
+  Rendered application/_tip_card.html.erb (3.4ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered application/_user_link.html.erb (0.2ms)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 3]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 3]]
+  Rendered application/_tip_card.html.erb (4.1ms)
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered application/_user_link.html.erb (0.3ms)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 4]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 4]]
+  Rendered application/_tip_card.html.erb (5.5ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered application/_user_link.html.erb (0.2ms)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 5]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 5]]
+  Rendered application/_tip_card.html.erb (2.9ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered application/_user_link.html.erb (0.2ms)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 6]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 6]]
+  Rendered application/_tip_card.html.erb (4.0ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered application/_user_link.html.erb (0.2ms)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 7]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 7]]
+  Rendered application/_tip_card.html.erb (5.2ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered application/_user_link.html.erb (0.2ms)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 8]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 8]]
+  Rendered application/_tip_card.html.erb (3.3ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered application/_user_link.html.erb (0.2ms)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 9]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 9]]
+  Rendered application/_tip_card.html.erb (30.9ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered application/_user_link.html.erb (0.2ms)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 10]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 10]]
+  Rendered application/_tip_card.html.erb (3.0ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered application/_user_link.html.erb (0.2ms)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 11]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 11]]
+  Rendered application/_tip_card.html.erb (3.5ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered application/_user_link.html.erb (0.1ms)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 12]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "comments" WHERE "comments"."tip_id" = ?[0m  [["tip_id", 12]]
+  Rendered application/_tip_card.html.erb (3.0ms)
+  Rendered tips/index.html.erb within layouts/application (88.3ms)
+  Rendered application/_anonymous_user_header.html.erb (0.5ms)
+  Rendered application/_header.html.erb (1.9ms)
+  Rendered application/_footer.html.erb (0.3ms)
+Completed 200 OK in 114ms (Views: 109.0ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/tips/2" for 127.0.0.1 at 2020-11-10 12:11:41 +0100
+Processing by TipsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTip Load (0.2ms)[0m  [1m[34mSELECT  "tips".* FROM "tips" WHERE "tips"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering tips/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered application/_user_link.html.erb (0.7ms)
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."tip_id" = ? ORDER BY "comments"."created_at" ASC[0m  [["tip_id", 2]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendered application/_user_link.html.erb (0.3ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendered application/_user_link.html.erb (0.4ms)
+  Rendered tips/show.html.erb within layouts/application (14.0ms)
+  Rendered application/_anonymous_user_header.html.erb (0.4ms)
+  Rendered application/_header.html.erb (2.1ms)
+  Rendered application/_footer.html.erb (0.3ms)
+Completed 200 OK in 47ms (Views: 43.9ms | ActiveRecord: 1.3ms)
 
 

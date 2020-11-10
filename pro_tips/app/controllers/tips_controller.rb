@@ -3,7 +3,7 @@ class TipsController < ApplicationController
 
   def index
     @search_term = params[:q]
-    @tips = Tip.search(@search_term)
+    @tips = Tip.search(@search_term).page(params[:page])
   end
 
   def show

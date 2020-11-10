@@ -13,4 +13,5 @@ class Tip < ApplicationRecord
   scope :search,         ->(search_term) { title_contains(search_term).or(body_contains(search_term)) }
   scope :most_recent,         -> { order(updated_at: :desc).limit(4) }
   
+  paginates_per 8
 end

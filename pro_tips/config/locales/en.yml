@@ -1,16 +1,19 @@
 en:
-  
+
   cancel: 'Cancel'
-  create_new_tip:
-    button: 'Create Tip'
+  create_tip: 'Create Tip'
 
   helpers:
     label:
       tip:
-        title: 'Title'
         body: 'Body'
-        
-
+        title: 'Title'
+  helpers:
+    label:
+      user:
+        email: 'Email'
+        name: 'Name'
+        avatar_url: 'Avatar url'
 
   login: 'Log in'
 
@@ -23,6 +26,7 @@ en:
     placeholder: 'e.g. Ruby classes'
   signup: 'Sign up'
 
+  update: 'Update'
   user: 'User'
 
   welcome_part1: 'Share your programming tips with other developers online!'

@@ -1,5 +1,4 @@
 en:
-
   cancel: 'Cancel'
   create_tip: 'Create Tip'
 
@@ -31,6 +30,3 @@ en:
 
   welcome_part1: 'Share your programming tips with other developers online!'
   welcome_part2: '... or find tips about something:'
-
-
-

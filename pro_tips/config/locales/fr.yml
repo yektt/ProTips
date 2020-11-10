@@ -1,5 +1,4 @@
 fr:
-
   cancel: 'Annuler'
   create_tip: 'Créer un conseil'
 
@@ -31,6 +30,3 @@ fr:
 
   welcome_part1: "Partagez vos conseils de programmation avec d'autres développeurs en ligne!"
   welcome_part2: '... ou trouvez des conseils sur quelque chose :'
-
-
-

@@ -1,0 +1,36 @@
+fr:
+
+  cancel: 'Annuler'
+  create_tip: 'Créer un conseil'
+
+  helpers:
+    label:
+      tip:
+        body: 'Texte'
+        title: 'Titre'
+  helpers:
+    label:
+      user:
+        email: 'Email'
+        name: 'Nom'
+        avatar_url: 'Avatar url'
+
+  login: 'Connection'
+
+  most_recent_activities: 'Voici les quatre derniers conseils actives:'
+
+  notice_for_tip_title: '100 caractères maximum'
+  
+  search:
+    button: 'Rechercher'
+    placeholder: 'par exemple, classes de Ruby'
+  signup: "S'inscrire"
+
+  update: 'Actualisation'
+  user: 'Utilisateur'
+
+  welcome_part1: "Partagez vos conseils de programmation avec d'autres développeurs en ligne!"
+  welcome_part2: '... ou trouvez des conseils sur quelque chose :'
+
+
+

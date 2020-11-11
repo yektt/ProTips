@@ -11,7 +11,9 @@
   <div class="card-header d-flex justify-content-start">
     <h3><%= @tip.title %></h3>
     <div>
-      <%= link_to 'Edit', edit_tip_path(@tip), class: 'btn btn-outline-secondary ml-3' %>
+      <% if(can_edit?(@tip))%>
+        <%= link_to 'Edit', edit_tip_path(@tip), class: 'btn btn-outline-secondary ml-3' %>
+      <% end %>
     </div>
   </div>
 

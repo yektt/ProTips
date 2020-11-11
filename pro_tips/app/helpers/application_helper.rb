@@ -5,8 +5,10 @@ module ApplicationHelper
   Avatar_happy_cone = "https://68.media.tumblr.com/22d1c50c3e2ca1062a94b47a65bfeb6d/tumblr_o51oavbMDx1ugpbmuo10_500.png"
   
   def default_avatar(user)
+    user.name ||= ''
+
     case 
-    when ( user.name.nil?)              then user.avatar_url ||= "#{Avatar_cat}"
+    when ( user.name.empty? )           then "#{Avatar_cat}"
     when ( user.name[0].downcase < 'h') then "#{Avatar_cat}"
     when ( user.name[0].downcase < 'n') then "#{Avatar_octahedron}"
     when ( user.name[0].downcase < 'u') then "#{Avatar_pyramid}"

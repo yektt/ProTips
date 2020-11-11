@@ -2218,3 +2218,4 @@ Processing by TipsController#index as HTML
 Completed 200 OK in 76ms (Views: 72.3ms | ActiveRecord: 2.3ms)
 
 
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]

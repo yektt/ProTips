@@ -2,7 +2,7 @@ class AccountController < ApplicationController
   before_action :ensure_authenticated
   
   def edit
-    @user = User.first
+    @user = User.find(session[:user_id])
   end
 
   def update

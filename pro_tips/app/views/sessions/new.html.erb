@@ -1,29 +1,27 @@
 <div class="col-md-6 offset-md-3">
   <h1 class="text-center display-4 m-5">Log in</h1>
   <% if(flash.any?) %>
-    <div class="alert">
+    <div class="form-group row alert alert-danger">
       <% flash.each do |name, message| %>
-        <div class="alert-<%= name %>"><%= message %></div>
+        <div><%= message %></div>
       <% end %>
     </div>
   <% end %>
-  <%= form_for(@user) do |form| %>
-    <% if @user.errors.any? %>
-      <%= render partial: 'model_errors', locals: { model: @user } %>
-    <% end %>
 
+  <%= form_tag(sessions_path) do %>
+    
     <div class="form-group row">
-      <%= form.label :email, class: 'col-sm-2 col-form-label pl-0' %>
-      <%= form.email_field :email, class: 'form-control', placeholder: 'e.g. me@epfl.ch' %>
+      <%= label(:email, nil, class: 'col-sm-2 col-form-label pl-0') %>
+      <%= text_field_tag(:email, nil, class: 'form-control', placeholder: 'e.g. me@epfl.ch') %>
     </div>
 
     <div class="form-group row">
-      <%= form.label :password, class: 'col-sm-2 col-form-label pl-0' %>
-      <%= form.password_field :password, class: 'form-control' %>
+      <%= label(:password, nil, class: 'col-sm-2 col-form-label pl-0') %>
+      <%= password_field_tag(:password, nil, class: 'form-control') %>
     </div>
 
     <div class="form-group row">
-        <%= form.submit 'Log in', class: 'btn btn-primary btn-block' %>
+        <%= submit_tag('Log in', class: 'btn btn-primary btn-block') %>
     </div>
   <% end %>
 </div>

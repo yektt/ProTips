@@ -15,7 +15,11 @@
   <%= link_to 'New tip', new_tip_path, class: 'btn btn-outline-primary', role: 'button' %>
 </div>
 <div class="row">
+<% if(@tips.empty?) %>
+  <h1>You don't have any tips!</h1>
+<% else %>
 <% @tips.each do |tip| %>
   <%= render partial: 'editable_tip_card', locals: { tip: tip } %>
+<% end %>
 <% end %>
 </div>

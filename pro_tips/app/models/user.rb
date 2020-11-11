@@ -9,5 +9,14 @@ class User < ApplicationRecord
   validates :email, presence: true,
                     uniqueness: true
 
+  before_validation :downcase_email
+
   paginates_per 6
+
+
+  private
+
+  def downcase_email 
+    self.email = email.downcase
+  end
 end

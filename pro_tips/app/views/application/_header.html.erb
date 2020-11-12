@@ -6,7 +6,11 @@
       <% end %>
       <div class="collapse navbar-collapse d-flex justify-content-end">
         <% if(logged_in?) %>
-          <%= render partial: 'registered_user_header' %>
+          <% if(is_admin?) %>
+            <%= render partial: 'admin_user_header' %>
+          <% else %>
+            <%= render partial: 'registered_user_header' %>
+          <%end%>
         <% else %>
           <%= render partial: 'anonymous_user_header' %>
         <% end %>

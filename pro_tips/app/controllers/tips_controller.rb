@@ -1,4 +1,6 @@
 class TipsController < ApplicationController
+  include RolesHelper
+  
   before_action :ensure_authenticated,   only: [:new, :create, :edit, :update]
   before_action :set_tip,                only: [:show, :edit, :update, :destroy]
   before_action :authorize_to_edit_idea, only: [:edit, :update]

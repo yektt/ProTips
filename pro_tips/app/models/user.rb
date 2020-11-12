@@ -8,6 +8,7 @@ class User < ApplicationRecord
 
   validates :email, presence: true,
                     uniqueness: true
+  validates :role, inclusion: {in: %w(registered admin)}
 
   after_initialize :default_role?
   before_validation :downcase_email

@@ -68,10 +68,6 @@ class TipsController < ApplicationController
     end
 
     def ensure_owner
-      if(@tip.user == current_user)
-        return
-      end
-
-      redirect_to account_path
+      redirect_to(account_path) unless(can_edit?(@tip))
     end
 end

@@ -6,7 +6,11 @@ class AccountController < ApplicationController
   end
 
   def update
-    redirect_to account_path
   end
+  
+  private
 
+  def current_user_params
+    params.require(:user).permit(:email, :name, :avatar_url)
+  end
 end

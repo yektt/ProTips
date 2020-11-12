@@ -6,6 +6,14 @@ class AccountController < ApplicationController
   end
 
   def update
+    logger.info(user.name)
+    respond_to do |format|
+      if @user.update(current_user_params)
+        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+      else
+        format.html { render :edit }
+      end
+    end
   end
   
   private

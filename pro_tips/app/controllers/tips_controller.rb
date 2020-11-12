@@ -1,6 +1,6 @@
 class TipsController < ApplicationController
-  before_action :set_tip,               only: [:show, :edit, :update, :destroy]
   before_action :ensure_authenticated,  only: [:edit, :update]
+  before_action :set_tip,               only: [:show, :edit, :update, :destroy]
   before_action :ensure_owner,          only: [:edit, :update]
 
   def index
@@ -68,9 +68,7 @@ class TipsController < ApplicationController
     end
 
     def ensure_owner
-      tip = Tip.find(params[:id])
-
-      if(tip.user == current_user)
+      if(@tip.user == current_user)
         return
       end
 

@@ -10,7 +10,7 @@ class User < ApplicationRecord
                     uniqueness: true
   validates :role, inclusion: {in: %w(registered admin)}
 
-  after_initialize :default_role?
+  after_initialize :default_role!
   before_validation :downcase_email
 
   paginates_per 6
@@ -22,7 +22,7 @@ class User < ApplicationRecord
     self.email = email.downcase
   end
 
-  def default_role?
-    self.role ||= 'registered '
+  def default_role!
+    self.role ||= 'registered'
   end
 end

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :ensure_admin, only: [:edit, :update]
+  
   before_action :set_user,     only: [:show, :edit, :update, :destroy]
 
   def index
@@ -18,7 +18,6 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-
     respond_to do |format|
       if @user.save
         # In this format call, the flash message is being passed directly to
@@ -59,11 +58,11 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:email, :name, :avatar_url, :password)
+      params.require(:user).permit(:email, :password)
     end
 
     def edit_user_params
-      params.require(:user).permit(:email, :name, :avatar_url)
+      params.require(:user).permit(:email, :name, :avatar_url, :role)
     end
 
     def ensure_admin

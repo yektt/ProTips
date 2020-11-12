@@ -16,9 +16,9 @@ This is just basic "newline" markers and won't convert to new lines in HTML, whi
 of <br /> or more appropriate markup.)
 
 
-florian = User.create!(email: 'florian@extensionschool.ch', name: 'Florian', role:'admin')
-sara    = User.create!(email: 'sara@extensionschool.ch',    name: 'Sara', role:'registered')
-linda   = User.create!(email: 'linda@extensionschool.ch',   name: 'Linda', role:'registered')
+florian = User.create!(email: 'florian@extensionschool.ch', password:'password',  name: 'Florian',  role:'admin')
+sara    = User.create!(email: 'sara@extensionschool.ch',    password:'password' , name: 'Sara',     role:'registered')
+linda   = User.create!(email: 'linda@extensionschool.ch',   password:'password' , name: 'Linda',    role:'registered')
 
 Tip.create!(title: 'Use #name on a class in Ruby',
             body:  'Using Class.name returns a String representing the name of a class!  E.g. Integer.name returns "Integer" and ApplicationController.name returns "ApplicationController"',

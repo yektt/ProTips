@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :ensure_admin, only: [:edit, :update]
+  before_action :set_user,     only: [:show, :edit, :update, :destroy]
 
   def index
     @users = User.all.page(params[:page])
@@ -59,6 +60,14 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:email, :name, :avatar_url, :password)
+    end
+
+    def ensure_admin
+      if(current_user.role == 'admin')
+        return
+      end
+
+      redirect_to account_path
     end
 
     def set_params

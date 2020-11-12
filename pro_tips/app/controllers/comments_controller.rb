@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_tip
+  before_action :ensure_authenticated  
 
   def create
     @comment = Comment.new(comment_params)
@@ -7,7 +8,7 @@ class CommentsController < ApplicationController
 
     # Needs to be changed: this always sets the User for a Comment to the first
     # User in the database, _not_ the User that POSTed the Comment.
-    @comment.user = User.first
+    @comment.user = current_user
 
     respond_to do |format|
       # In these format calls, the flash message is being passed directly to

@@ -202,7 +202,7 @@ DEPENDENCIES
   bcrypt
   byebug
   capybara (~> 2.13)
-  carrierwave (~> 1.1.0)
+  carrierwave
   coffee-rails (~> 4.2)
   jbuilder (~> 2.5)
   kaminari

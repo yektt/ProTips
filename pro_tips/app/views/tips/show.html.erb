@@ -13,6 +13,7 @@
     <div>
       <% if(can_edit?(@tip))%>
         <%= link_to 'Edit', edit_tip_path(@tip), class: 'btn btn-outline-secondary ml-3' %>
+        <%= link_to 'Delete', tip_path(@tip), method: :delete, class: 'btn btn-outline-danger ml-3', role: 'button' %>
       <% end %>
     </div>
   </div>

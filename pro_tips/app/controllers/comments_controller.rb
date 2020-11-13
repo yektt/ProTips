@@ -14,7 +14,7 @@ class CommentsController < ApplicationController
       # In these format calls, the flash message is being passed directly to
       # redirect_to().  It's a caonvenient way of setting a flash notice or
       # alert without referencing the flash Hash explicitly.
-      if @comment.save!
+      if @comment.save
         format.html { redirect_to @tip, notice: 'Comment was successfully created.' }
       else
         format.html { redirect_to @tip, alert: 'Unable to create comment.' }

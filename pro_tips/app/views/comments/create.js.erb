@@ -1,0 +1,9 @@
+var comment = {
+  'time' : '<%= @comment.created_at.strftime('%FT%R') %>',
+  'commenter' : '<%= User.find(@comment.user_id).name %>',
+  'body' : 'body',
+  'commenter_avatar' : '<%= User.find(@comment.user_id).avatar_url %>',
+  'link' : '<%= user_path(comment.user) %>'
+};
+
+Comments.addComment(comment);

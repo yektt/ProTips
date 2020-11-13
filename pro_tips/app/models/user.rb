@@ -15,6 +15,8 @@ class User < ApplicationRecord
 
   paginates_per 6
 
+  mount_uploader :avatar, AvatarUploader
+
 
   private
 

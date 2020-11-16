@@ -1,5 +1,9 @@
 Tips = {};
 
 Tips.removeTipCard = function(tipId) {
-  document.getElementById("tip-" + tipId).parentElement.remove(); 
+  tip_card = document.getElementById("tip-" + tipId);
+  if(tip_card.nextElementSibling == null && tip_card.previousElementSibling == null)
+    location.reload();
+  
+  tip_card.remove();
 }

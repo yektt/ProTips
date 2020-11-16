@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
+  include RolesHelper
   
-  before_action :set_user,     only: [:show, :edit, :update, :destroy]
+  before_action :set_user,                  only: [:show, :edit, :update, :destroy]
+  before_action :authorize_to_edit_user,    only: [:edit, :update]
 
   def index
     @users = User.all.page(params[:page])
@@ -66,11 +68,7 @@ class UsersController < ApplicationController
       params.require(:user).permit(:email, :name, :avatar_url, :role, :avatar)
     end
 
-    def ensure_admin
-      if(current_user.role == 'admin')
-        return
-      end
-
-      redirect_to account_path
+    def authorize_to_edit_user
+      redirect_to(account_path) unless(can_update?(@user))
     end
 end

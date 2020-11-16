@@ -17,9 +17,6 @@ class TipsController < ApplicationController
     @tip = Tip.new
   end
 
-  def edit
-  end
-
   def create
     @tip = Tip.new(tip_params)
     @tip.user = current_user
@@ -34,6 +31,9 @@ class TipsController < ApplicationController
         format.html { render :new }
       end
     end
+  end
+
+  def edit
   end
 
   def update
@@ -62,6 +62,10 @@ class TipsController < ApplicationController
 
   private
 
+    def authorize_to_edit_idea
+      redirect_to(account_path) unless(can_edit?(@tip))
+    end
+
     def set_tip
       @tip = Tip.find(params[:id])
     end
@@ -69,9 +73,5 @@ class TipsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def tip_params
       params.require(:tip).permit(:title, :body)
-    end
-
-    def authorize_to_edit_idea
-      redirect_to(account_path) unless(can_edit?(@tip))
     end
 end

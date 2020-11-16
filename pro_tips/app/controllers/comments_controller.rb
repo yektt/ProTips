@@ -24,13 +24,12 @@ class CommentsController < ApplicationController
   end
 
   private
-
-    def set_tip
-      @tip = Tip.find(params[:tip_id])
-    end
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def comment_params
       params.require(:comment).permit(:body, :title)
+    end
+
+    def set_tip
+      @tip = Tip.find(params[:tip_id])
     end
 end

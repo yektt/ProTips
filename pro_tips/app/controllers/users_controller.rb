@@ -16,9 +16,6 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  def edit
-  end
-
   def create
     @user = User.new(user_params)
     respond_to do |format|
@@ -31,6 +28,9 @@ class UsersController < ApplicationController
         format.html { render :new }
       end
     end
+  end
+
+  def edit
   end
 
   def update
@@ -55,22 +55,12 @@ class UsersController < ApplicationController
   end
 
   private
-
-    def set_user
-      @user = User.find(params[:id])
-    end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def user_params
-      params.require(:user).permit(:email, :password)
+    def authorize_to_edit_user
+      redirect_to(account_path) unless(can_update?(@user))
     end
 
     def edit_user_params
       params.require(:user).permit(:email, :name, :avatar_url, :role, :avatar)
-    end
-
-    def authorize_to_edit_user
-      redirect_to(account_path) unless(can_update?(@user))
     end
     
     def ensure_admin
@@ -79,5 +69,14 @@ class UsersController < ApplicationController
       else
         redirect_to login_path
       end
+    end
+
+    def set_user
+      @user = User.find(params[:id])
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def user_params
+      params.require(:user).permit(:email, :password)
     end
 end

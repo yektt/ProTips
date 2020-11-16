@@ -1,7 +1,7 @@
 Comments = {};
 
-Comments.displayComment = function(comment) {
-  
+Comments.buildComment = function(comment) {
+
   var commentParagraph = document.createElement('p');
   commentParagraph.className = 'mb-0';
   commentParagraph.appendChild(document.createTextNode(comment.body));
@@ -26,12 +26,33 @@ Comments.displayComment = function(comment) {
   commentBlockquote.className = 'blockquote';
   commentBlockquote.appendChild(commentParagraph);
   commentBlockquote.appendChild(commentFooter);
+  
+  return commentBlockquote;
 }
 
 Comments.addComment = function(comment) {
   var newComment, comments;
 
-  newComment = Comments.displayComment(comment);
-  comments = document.getElementById('commentList');
-  comments.insertBefore(newComment, comments.lastChild);
+  newComment = Comments.buildComment(comment);
+  var comments = document.getElementById('commentList');
+
+  if (comments == null)
+  {
+    var commentArea = document.getElementById('comments');
+    var h3 = document.createElement('h3');
+    h3.appendChild(document.createTextNode('Comments'));
+    var div = document.createElement('div');
+    div.className = 'm-3';
+    div.id = 'commentList';
+
+    commentArea.insertBefore(div, commentArea.firstChild);
+    commentArea.insertBefore(h3, commentArea.firstChild);
+    div.appendChild(newComment);
+    document.getElementById('no_comments').remove();
+  }
+  else
+  {
+    comments = document.getElementById('commentList');
+    comments.appendChild(newComment);
+  }
 }

@@ -1,45 +1,9 @@
-var commentParagraph = document.createElement('p');
-  commentParagraph.className = 'mb-0';
-  commentParagraph.appendChild(document.createTextNode('<%= @comment.body %>'));
+var comment = {
+  'time' : '<%= @comment.created_at %>',
+  'commenter' : '<%= User.find(@comment.user_id).name %>',
+  'body' : '<%= @comment.body %>',
+  'commenter_avatar' : '<%= User.find(@comment.user_id).avatar_url %>',
+  'link' : '<%= user_path(@comment.user) %>'
+};
 
-  var commenterAvatar = document.createElement('img');
-  commenterAvatar.className = 'avatar-xs';
-  commenterAvatar.src = '<%= @comment.user.avatar_url %>';
-  commenterAvatar.alt = '<%= @comment.user.name %>';
-
-  var commentLink = document.createElement('a');
-  commentLink.href = '<%= user_path(@comment.user) %>';
-  commentLink.appendChild(commenterAvatar);
-  commentLink.appendChild(document.createTextNode(" " + '<%= User.find(@comment.user_id).name %>'));
-
-  var commentFooter = document.createElement('footer');
-  commentFooter.className = 'blockquote-footer';
-  commentFooter.appendChild(document.createTextNode('Added by '));
-  commentFooter.appendChild(commentLink);
-  commentFooter.appendChild(document.createTextNode(' on ' + '<%= @comment.created_at %>'));
-
-  var commentBlockquote = document.createElement('blockquote');
-  commentBlockquote.className = 'blockquote';
-  commentBlockquote.appendChild(commentParagraph);
-  commentBlockquote.appendChild(commentFooter);
-
-  var comments = document.getElementById('commentList');
-
-  if (comments == null)
-  {
-    var commentArea = document.getElementById('comments');
-    var h3 = document.createElement('h3');
-    h3.appendChild(document.createTextNode('Comments'));
-    var div = document.createElement('div');
-    div.className = 'm-3';
-    div.id = 'commentList';
-    commentArea.insertBefore(div, commentArea.firstChild);
-    commentArea.insertBefore(h3, commentArea.firstChild);
-    div.appendChild(commentBlockquote);
-    document.getElementById('no_comments').remove();
-  }
-  else
-  {
-    comments = document.getElementById('commentList');
-    comments.insertBefore(commentBlockquote, comments.lastChild);
-  }
+Comments.addComment(comment);

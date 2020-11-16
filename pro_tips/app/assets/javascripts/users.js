@@ -1,2 +1,5 @@
-// Place all the behaviors and hooks related to the matching controller here.
-// All this logic will automatically be available in application.js.
+Users = {};
+
+Users.removeUser = function (userId) {
+  document.getElementById("user-" + userId).parentElement.remove();
+};

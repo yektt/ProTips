@@ -23,8 +23,8 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: pro_tips
+  database: protips
   pool: 5
-  username: pro_tips
+  username: protips
   password: secret
   

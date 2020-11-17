@@ -56,7 +56,6 @@ Tip.create!(title: 'Organize CSS rules in Sass files well',
 Tip.create!(title: 'Just experiment!',
             body:  "The great thing about writing software is that it's easy to try things out and change them before submitting it for a production deployment.  I've found that taking a break and coming back to a difficult programming problem really helps too.",
             user:  linda)
-            user:  linda)
 
 Comment.create!(body:   'Thank you! It will help to develop my new program much faster!',
                 tip_id: 2,

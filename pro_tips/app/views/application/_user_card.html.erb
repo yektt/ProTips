@@ -3,7 +3,7 @@
     <h3 class="mr-3"><%= user.name %></h3>
     <div>
       <% if(logged_in?) %>
-        <% if(is_admin? || user == current_user) %>
+        <% if(is_admin?) %>
           <%= link_to 'Edit', edit_user_path(user), class: 'btn btn-outline-secondary mr-3' %>
           <% unless(user == current_user)%>
             <%= link_to 'Delete', user_path(user), class: 'btn btn-outline-danger mr-3', method: :delete, remote: true %>

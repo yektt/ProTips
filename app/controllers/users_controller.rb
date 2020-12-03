@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   before_action :set_user,                  only: [:show, :edit, :update, :destroy]
   before_action :authorize_to_edit_user,    only: [:edit, :update]
-  before_action :ensure_admin,              only: [:index]
+  before_action :ensure_admin,              only: [:index, :destroy]
 
   def index
     @users = User.all.page(params[:page])

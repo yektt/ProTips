@@ -1,3 +1,7 @@
-<%= link_to user_path(user) do %>
-  <%= image_tag user.avatar_url, class: 'avatar-xs' %><%= user.name %>
-<% end %>
+<% if(user == nil) %>
+   'deleted user'
+ <% else %>
+   <%= link_to user_path(user) do %>
+     <%= image_tag user.avatar_url, class: 'avatar-xs' %><%= user.name %>
+   <% end %>
+ <% end %>

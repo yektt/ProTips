@@ -1,4 +1,5 @@
 en:
+  account: 'Account'
   cancel: 'Cancel'
   create_tip: 'Create Tip'
 
@@ -15,6 +16,7 @@ en:
         avatar_url: 'Avatar url'
 
   login: 'Log in'
+  logout: 'Log out'
 
   most_recent_activities: 'Here are the four most recently active tips:'
 

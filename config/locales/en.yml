@@ -29,6 +29,7 @@ en:
 
   update: 'Update'
   user: 'User'
+  users: 'Users'
 
   welcome_part1: 'Share your programming tips with other developers online!'
   welcome_part2: '... or find tips about something:'

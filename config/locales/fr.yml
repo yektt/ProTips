@@ -29,6 +29,7 @@ fr:
 
   update: 'Actualisation'
   user: 'Utilisateur'
+  users: 'Utilisateurs'
 
   welcome_part1: "Partagez vos conseils de programmation avec d'autres développeurs en ligne!"
   welcome_part2: '... ou trouvez des conseils sur quelque chose :'

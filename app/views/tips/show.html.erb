@@ -20,7 +20,11 @@
 
   <div class="card-body">
     <p><%= @tip.body %></p>
-    <p class="text-muted">Created by <%= render partial: 'user_link', locals: { user: @tip.user } %> on <%= @tip.created_at.strftime("%d %b %Y at %H:%M") %></p>
+    <% if( @tip.user.nil? ) %>
+      <p class="text-muted">Created by deleted user on <%= @tip.created_at.strftime("%d %b %Y at %H:%M") %></p>
+    <% else %>
+      <p class="text-muted">Created by <%= render partial: 'user_link', locals: { user: @tip.user } %> on <%= @tip.created_at.strftime("%d %b %Y at %H:%M") %></p>
+    <% end %>
   </div>
 
   <div class="card-body" id="comments">
@@ -31,7 +35,12 @@
           <blockquote class="blockquote">
             <p class="mb-0"><%= comment.body %></p>
             <footer class="blockquote-footer">
-              Added by <%= render partial: 'user_link', locals: { user: comment.user } %> on <%= comment.created_at %></footer>
+            <% if( tip.user.nil? ) %>
+              Added by deleted user on <%= comment.created_at %>
+            <% else %>
+              Added by <%= render partial: 'user_link', locals: { user: comment.user } %> on <%= comment.created_at %>
+            <% end %>
+            </footer>
           </blockquote>
         <% end %>
       </div>

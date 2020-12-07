@@ -2,11 +2,7 @@
   <div class="card">
     <h4 class="card-header"><%= tip.title %></h4>
     <div class="card-body">
-      <% if( tip.user.nil? ) %>
-        <p>Posted by 'deleted user'</p>
-      <% else %>
-        <p>Posted by <%= render partial: 'user_link', locals: { user: tip.user } %></p>
-      <% end %>
+      <p>Posted by <%= render partial: 'user_link', locals: { user: tip.user } %></p>
       <p><%= pluralize_comments(tip.comments) %> on this tip.</p>
       <%= link_to 'Show more', tip_path(tip), class: 'btn btn-outline-primary', role: 'button' %>
       <% if(can_edit?(tip))%>

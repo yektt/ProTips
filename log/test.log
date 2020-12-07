@@ -35,3 +35,290 @@
   [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
   [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
   [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = ?, "updated_at" = ? WHERE "ar_internal_metadata"."key" = ?[0m  [["value", "test"], ["updated_at", "2020-12-07 10:33:47.376529"], ["key", "environment"]]
+  [1m[35m (1.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_comments_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_comments_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_comments_on_tip_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_comments_on_tip_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_tips_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_tips_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "users"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "created_at", "updated_at", "id") VALUES ('one@extensionschool.ch', 'User One', '2020-12-07 10:34:10.046449', '2020-12-07 10:34:10.046449', 980190962)[0m
+  [1m[36mFixture Insert (0.0ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "created_at", "updated_at", "id") VALUES ('two@extensionschool.ch', 'User Two', '2020-12-07 10:34:10.046449', '2020-12-07 10:34:10.046449', 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "tips"[0m
+  [1m[36mFixture Insert (0.0ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', 'MyString', '2020-12-07 10:34:10.048297', '2020-12-07 10:34:10.048297', 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.0ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "created_at", "updated_at", "id", "user_id") VALUES ('MyString', 'MyString', '2020-12-07 10:34:10.048297', '2020-12-07 10:34:10.048297', 298486374, 298486374)[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "comments"[0m
+  [1m[36mFixture Insert (0.0ms)[0m  [1m[32mINSERT INTO "comments" ("body", "created_at", "updated_at", "id", "user_id", "tip_id") VALUES ('MyString', '2020-12-07 10:34:10.049423', '2020-12-07 10:34:10.049423', 980190962, 980190962, 980190962)[0m
+  [1m[36mFixture Insert (0.0ms)[0m  [1m[32mINSERT INTO "comments" ("body", "created_at", "updated_at", "id", "user_id", "tip_id") VALUES ('MyString', '2020-12-07 10:34:10.049423', '2020-12-07 10:34:10.049423', 298486374, 298486374, 298486374)[0m
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------
+CommentTest: test_cascading_save
+--------------------------------
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user@epfl.ch"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "created_at", "updated_at", "password_digest", "role") VALUES (?, ?, ?, ?, ?, ?)[0m  [["email", "user@epfl.ch"], ["name", "Kyle"], ["created_at", "2020-12-07 10:34:10.059182"], ["updated_at", "2020-12-07 10:34:10.059182"], ["password_digest", "$2a$04$pgetYHgNVdGONlWH4cPWiez04WijPKkiZLnbTAP2/IWKOpIH.9pzq"], ["role", "registered"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "tip title"], ["body", "tip body"], ["user_id", 980190963], ["created_at", "2020-12-07 10:34:10.067446"], ["updated_at", "2020-12-07 10:34:10.067446"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "comments" ("body", "user_id", "tip_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["body", "It is a comment!"], ["user_id", 980190963], ["tip_id", 980190963], ["created_at", "2020-12-07 10:34:10.079396"], ["updated_at", "2020-12-07 10:34:10.079396"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" ORDER BY "comments"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------
+CommentTest: test_cascading_save
+--------------------------------
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user@epfl.ch"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "created_at", "updated_at", "password_digest", "role") VALUES (?, ?, ?, ?, ?, ?)[0m  [["email", "user@epfl.ch"], ["name", "Kyle"], ["created_at", "2020-12-07 10:34:52.211822"], ["updated_at", "2020-12-07 10:34:52.211822"], ["password_digest", "$2a$04$DlgYlne9Lm6YyAWT2XE76OaozGXGewtG6ZT/YeUyxF2fn7asHUJQe"], ["role", "registered"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "tip title"], ["body", "tip body"], ["user_id", 1], ["created_at", "2020-12-07 10:34:52.220934"], ["updated_at", "2020-12-07 10:34:52.220934"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "comments" ("body", "user_id", "tip_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["body", "It is a comment!"], ["user_id", 1], ["tip_id", 1], ["created_at", "2020-12-07 10:34:52.234736"], ["updated_at", "2020-12-07 10:34:52.234736"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" ORDER BY "comments"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------
+CommentTest: test_presence_of_the_body
+--------------------------------------
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user@epfl.ch"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "name", "created_at", "updated_at", "password_digest", "role") VALUES (?, ?, ?, ?, ?, ?)[0m  [["email", "user@epfl.ch"], ["name", "Kyle"], ["created_at", "2020-12-07 10:34:52.240288"], ["updated_at", "2020-12-07 10:34:52.240288"], ["password_digest", "$2a$04$7HDsy/zrG7LHRfWIsTueouywu4uO4jGIVbJRsDdr/Rnjw8Jtt1mkK"], ["role", "registered"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "tip title"], ["body", "tip body"], ["user_id", 1], ["created_at", "2020-12-07 10:34:52.241694"], ["updated_at", "2020-12-07 10:34:52.241694"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+---------------------------------------------------
+UserTest: test_email_is_lowercase_before_validation
+---------------------------------------------------
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "new@epfl.ch"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "created_at", "updated_at", "password_digest", "role") VALUES (?, ?, ?, ?, ?)[0m  [["email", "new@epfl.ch"], ["created_at", "2020-12-07 10:34:52.249987"], ["updated_at", "2020-12-07 10:34:52.249987"], ["password_digest", "$2a$04$mwU2J8526Q5GYiQb9rWbj.wWO6UyvnBiPyjfWPxZjFITq9SgSNgSe"], ["role", "registered"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+----------------------------------------------------
+UserTest: test_user_cannot_be_exist_without_password
+----------------------------------------------------
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "new@epfl.ch"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+----------------------------------
+TipTest: test_two_matching_results
+----------------------------------
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "new@extensionschool.ch"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "created_at", "updated_at", "password_digest", "role") VALUES (?, ?, ?, ?, ?)[0m  [["email", "new@extensionschool.ch"], ["created_at", "2020-12-07 10:34:52.254865"], ["updated_at", "2020-12-07 10:34:52.254865"], ["password_digest", "$2a$04$vR4NB.5AfyIKNb4h4QVd5.RcIjaFkm9FJiADBaa0ooW0WC.t8c9Ze"], ["role", "registered"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "title for tip1"], ["body", "tip1 - body"], ["user_id", 1], ["created_at", "2020-12-07 10:34:52.256218"], ["updated_at", "2020-12-07 10:34:52.256218"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "title for tip2"], ["body", "tip2 - body"], ["user_id", 1], ["created_at", "2020-12-07 10:34:52.257227"], ["updated_at", "2020-12-07 10:34:52.257227"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTip Load (0.1ms)[0m  [1m[34mSELECT "tips".* FROM "tips" WHERE ((title LIKE '%title%') OR (body LIKE '%title%'))[0m
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+---------------------------------------
+TipTest: test_most_recent_with_six_tips
+---------------------------------------
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "new@extensionschool.ch"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "created_at", "updated_at", "password_digest", "role") VALUES (?, ?, ?, ?, ?)[0m  [["email", "new@extensionschool.ch"], ["created_at", "2020-12-07 10:34:52.260658"], ["updated_at", "2020-12-07 10:34:52.260658"], ["password_digest", "$2a$04$90Fu.78Mqh00Z9nl0cN32.0XRn1lxKQIRUy1.eler.3Jz4H7ZTRP6"], ["role", "registered"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "title1 for the tip"], ["body", "tip - body"], ["user_id", 1], ["created_at", "2020-12-07 10:34:52.261987"], ["updated_at", "2020-12-07 10:34:52.261987"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "title2 for the tip"], ["body", "tip - body"], ["user_id", 1], ["created_at", "2020-12-07 10:34:52.262968"], ["updated_at", "2020-12-07 10:34:52.262968"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "title3 for the tip"], ["body", "tip - body"], ["user_id", 1], ["created_at", "2020-12-07 10:34:52.263851"], ["updated_at", "2020-12-07 10:34:52.263851"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "title4 for the tip"], ["body", "tip - body"], ["user_id", 1], ["created_at", "2020-12-07 10:34:52.264733"], ["updated_at", "2020-12-07 10:34:52.264733"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "title5 for the tip"], ["body", "tip - body"], ["user_id", 1], ["created_at", "2020-12-07 10:34:52.265629"], ["updated_at", "2020-12-07 10:34:52.265629"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "title6 for the tip"], ["body", "tip - body"], ["user_id", 1], ["created_at", "2020-12-07 10:34:52.266505"], ["updated_at", "2020-12-07 10:34:52.266505"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTip Load (0.1ms)[0m  [1m[34mSELECT  "tips".* FROM "tips" ORDER BY "tips"."updated_at" DESC LIMIT ?[0m  [["LIMIT", 4]]
+  [1m[36mTip Load (0.1ms)[0m  [1m[34mSELECT  "tips".* FROM "tips" ORDER BY "tips"."updated_at" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTip Load (0.1ms)[0m  [1m[34mSELECT  "tips".* FROM "tips" ORDER BY "tips"."updated_at" DESC LIMIT ?[0m  [["LIMIT", 4]]
+  [1m[36mTip Load (0.1ms)[0m  [1m[34mSELECT  "tips".* FROM "tips" ORDER BY "tips"."updated_at" DESC LIMIT ?[0m  [["LIMIT", 4]]
+  [1m[36mTip Load (0.1ms)[0m  [1m[34mSELECT  "tips".* FROM "tips" ORDER BY "tips"."updated_at" DESC LIMIT ?[0m  [["LIMIT", 4]]
+  [1m[36mTip Load (0.1ms)[0m  [1m[34mSELECT  "tips".* FROM "tips" ORDER BY "tips"."updated_at" DESC LIMIT ?[0m  [["LIMIT", 4]]
+  [1m[36mTip Load (0.1ms)[0m  [1m[34mSELECT  "tips".* FROM "tips" ORDER BY "tips"."updated_at" DESC LIMIT ?[0m  [["LIMIT", 4]]
+  [1m[36mTip Load (0.1ms)[0m  [1m[34mSELECT  "tips".* FROM "tips" ORDER BY "tips"."updated_at" DESC LIMIT ?[0m  [["LIMIT", 4]]
+  [1m[36mTip Load (0.1ms)[0m  [1m[34mSELECT  "tips".* FROM "tips" ORDER BY "tips"."updated_at" DESC LIMIT ?[0m  [["LIMIT", 4]]
+  [1m[36mTip Load (0.1ms)[0m  [1m[34mSELECT  "tips".* FROM "tips" ORDER BY "tips"."updated_at" DESC LIMIT ?[0m  [["LIMIT", 4]]
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+------------------------------
+TipTest: test_search_with_body
+------------------------------
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "new@extensionschool.ch"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "created_at", "updated_at", "password_digest", "role") VALUES (?, ?, ?, ?, ?)[0m  [["email", "new@extensionschool.ch"], ["created_at", "2020-12-07 10:34:52.272413"], ["updated_at", "2020-12-07 10:34:52.272413"], ["password_digest", "$2a$04$7WO6uJQRNLGXH7pdpDB3/uv0U6w0JhSYevesFgGUJE1IZhUsGB08q"], ["role", "registered"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "new tip"], ["body", "tip - body"], ["user_id", 1], ["created_at", "2020-12-07 10:34:52.273775"], ["updated_at", "2020-12-07 10:34:52.273775"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTip Load (0.1ms)[0m  [1m[34mSELECT "tips".* FROM "tips" WHERE ((title LIKE '%body%') OR (body LIKE '%body%'))[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------
+TipTest: test_presence_of_the_title
+-----------------------------------
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+----------------------------------------
+TipTest: test_search_with_body_and_title
+----------------------------------------
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "new@extensionschool.ch"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "created_at", "updated_at", "password_digest", "role") VALUES (?, ?, ?, ?, ?)[0m  [["email", "new@extensionschool.ch"], ["created_at", "2020-12-07 10:34:52.278302"], ["updated_at", "2020-12-07 10:34:52.278302"], ["password_digest", "$2a$04$D9VMshLXgPIMur9YmC1kYO9W97.AZSGKChPbhXPQHzofeOH6lU2X."], ["role", "registered"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "title1 for tip1"], ["body", "hello tip2"], ["user_id", 1], ["created_at", "2020-12-07 10:34:52.279627"], ["updated_at", "2020-12-07 10:34:52.279627"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "title2 for tip2"], ["body", "hello tip1"], ["user_id", 1], ["created_at", "2020-12-07 10:34:52.280596"], ["updated_at", "2020-12-07 10:34:52.280596"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTip Load (0.1ms)[0m  [1m[34mSELECT "tips".* FROM "tips" WHERE ((title LIKE '%tip1%') OR (body LIKE '%tip1%'))[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+----------------------------------
+TipTest: test_presence_of_the_body
+----------------------------------
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------------
+TipTest: test_maximum_lenght_of_the_title
+-----------------------------------------
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "new@extensionschool.ch"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "created_at", "updated_at", "password_digest", "role") VALUES (?, ?, ?, ?, ?)[0m  [["email", "new@extensionschool.ch"], ["created_at", "2020-12-07 10:34:52.284589"], ["updated_at", "2020-12-07 10:34:52.284589"], ["password_digest", "$2a$04$4/ksuudI34AfBP18Pc7vQutQFfWc6m8KUwpXmyto5VHjNWSO6h7pa"], ["role", "registered"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------
+TipTest: test_changing_the_body_of_tip
+--------------------------------------
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "new@extensionschool.ch"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "created_at", "updated_at", "password_digest", "role") VALUES (?, ?, ?, ?, ?)[0m  [["email", "new@extensionschool.ch"], ["created_at", "2020-12-07 10:34:52.288078"], ["updated_at", "2020-12-07 10:34:52.288078"], ["password_digest", "$2a$04$2lALaZc03AGf/5FtH1YmS.jzkcL2PhljLMYUaS5B0xEAiVRt2871G"], ["role", "registered"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "new tip"], ["body", "tip - body"], ["user_id", 1], ["created_at", "2020-12-07 10:34:52.289285"], ["updated_at", "2020-12-07 10:34:52.289285"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "tips" SET "body" = ?, "updated_at" = ? WHERE "tips"."id" = ?[0m  [["body", "new body for tip"], ["updated_at", "2020-12-07 10:34:52.290091"], ["id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+---------------------------------------------
+TipTest: test_one_matching_result_from_search
+---------------------------------------------
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "new@extensionschool.ch"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "created_at", "updated_at", "password_digest", "role") VALUES (?, ?, ?, ?, ?)[0m  [["email", "new@extensionschool.ch"], ["created_at", "2020-12-07 10:34:52.292884"], ["updated_at", "2020-12-07 10:34:52.292884"], ["password_digest", "$2a$04$5XgRcM6UopA1I43VaX/vvOgpIq6rJpZFsPJKemye73cgMm4MTRHJC"], ["role", "registered"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "new tip"], ["body", "tip - body"], ["user_id", 1], ["created_at", "2020-12-07 10:34:52.294103"], ["updated_at", "2020-12-07 10:34:52.294103"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTip Load (0.1ms)[0m  [1m[34mSELECT "tips".* FROM "tips" WHERE ((title LIKE '%new tip%') OR (body LIKE '%new tip%'))[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+---------------------------------------
+TipTest: test_changing_the_title_of_tip
+---------------------------------------
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "new@extensionschool.ch"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "created_at", "updated_at", "password_digest", "role") VALUES (?, ?, ?, ?, ?)[0m  [["email", "new@extensionschool.ch"], ["created_at", "2020-12-07 10:34:52.297290"], ["updated_at", "2020-12-07 10:34:52.297290"], ["password_digest", "$2a$04$EU32F.jSleXppEWlNioXsOkm5M6mw389Ht44glqpB0vup4.CL.UZu"], ["role", "registered"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "new tip"], ["body", "tip - body"], ["user_id", 1], ["created_at", "2020-12-07 10:34:52.298511"], ["updated_at", "2020-12-07 10:34:52.298511"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[33mUPDATE "tips" SET "title" = ?, "updated_at" = ? WHERE "tips"."id" = ?[0m  [["title", "new title for tip"], ["updated_at", "2020-12-07 10:34:52.299293"], ["id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+---------------------------------
+TipTest: test_no_matching_results
+---------------------------------
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "new@extensionschool.ch"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "created_at", "updated_at", "password_digest", "role") VALUES (?, ?, ?, ?, ?)[0m  [["email", "new@extensionschool.ch"], ["created_at", "2020-12-07 10:34:52.301931"], ["updated_at", "2020-12-07 10:34:52.301931"], ["password_digest", "$2a$04$H5NquCamuP3yQSiKeWMMUutmvkI9RNP2Kbx07eceF.etvZpYpIzOm"], ["role", "registered"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "new tip"], ["body", "tip - body"], ["user_id", 1], ["created_at", "2020-12-07 10:34:52.303087"], ["updated_at", "2020-12-07 10:34:52.303087"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTip Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "tips" WHERE ((title LIKE '%new title%') OR (body LIKE '%new title%')) LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------
+TipTest: test_search_with_title
+-------------------------------
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "new@extensionschool.ch"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "created_at", "updated_at", "password_digest", "role") VALUES (?, ?, ?, ?, ?)[0m  [["email", "new@extensionschool.ch"], ["created_at", "2020-12-07 10:34:52.306253"], ["updated_at", "2020-12-07 10:34:52.306253"], ["password_digest", "$2a$04$Td9EomWa5J7WimZcwM.ELuxhBOIcQKpDK2RdjlPHbXPh/2hxmmEm2"], ["role", "registered"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "tips" ("title", "body", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "new tip"], ["body", "tip - body"], ["user_id", 1], ["created_at", "2020-12-07 10:34:52.307433"], ["updated_at", "2020-12-07 10:34:52.307433"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTip Load (0.1ms)[0m  [1m[34mSELECT "tips".* FROM "tips" WHERE ((title LIKE '%new tip%') OR (body LIKE '%new tip%'))[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m

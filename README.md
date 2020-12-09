@@ -8,4 +8,4 @@ When you've completed the project, update this README to include the full public
 
 ## Deployed URL
 
-Public Heroku URL: https://morning-mountain-34504.herokuapp.com/?locale=en
+Public Heroku URL: https://radiant-fjord-19968.herokuapp.com/?locale=en

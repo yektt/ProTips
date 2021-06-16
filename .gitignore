@@ -6,3 +6,5 @@ pro_tips/tmp/cache/*
 pro_tips/public/uploads/*
 pro_tips/public/assets/*
 public/assets/*
+config/application.yml
+tmp/*
